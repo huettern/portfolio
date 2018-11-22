@@ -1,0 +1,233 @@
+baseURL = "http://beeblebrox.ch/"
+languageCode = "en-us"
+title = "Noah Hütter Portfolio"
+theme ="lodi"
+
+
+[params]
+    # head theme color
+    theme_color = "#00ff00"
+
+    # head description
+    # This is what appears on the preview when posting this site on Facebook for example
+    description = "My Portfolio"
+
+    # head photo
+    # This is what appears on the preview when posting this site on Facebook for example
+    description_photo = "tux_pitaya_round-min.png"
+
+    # favicon image (512x512px), place this in the static/img folder
+    favicon = "tux_pitaya_round-min.png"
+
+    # logo image (204x204px), place this in the static/img folder
+    # this appears on the top left of the navigation
+    logo = "tux_pitaya_round-min-crop.png"
+
+    # Email
+    # email = ""
+
+    # Facebook username
+    # facebook = ""
+
+    # Twitter username
+    # twitter = "asdf"
+
+    # Dribbble username
+    # dribbble = ""
+
+    # LinkedIn URL
+    # linkedin = ""
+    
+    # Medium username
+    # medium = "asdf"
+
+[params.nav]
+ 	logoenable = false
+    enable = true
+
+[params.hero]
+    enable = true
+    
+    # Place this image in the static/img folder
+    avatar = "tux_pitaya_round-min.png"
+    subtitle = "Hi! I'm Noah, an electrical engineer from Zurich, Switzerland."
+
+    # Each element in this array makes a new <p> tag
+    # You can write this text in markdown
+    hero_right = ["some single line ",
+    "content some single line content some single line content some single line content some single line content",
+    "**This is a bold paragraph** and it's amazing.",
+    "This is my [GitHub](https://github.com/xaviablaza). It's pretty cool.",
+    "I also do a lot of coding if you didn't already know.",
+    "I study at XYZ University and I expect to graduate in 2050.",
+    "Please enjoy the rest of my website."]
+
+    # Link to your resume, place your PDF in the /static folder
+    resume = "resume.pdf"
+
+[params.resume]
+    enable = true
+    title = "My Process"
+    subtitle = "Full Process Design"
+
+[params.experience]
+    enable = true
+    title = "Experience"
+    subtitle = "Timeline of my Experience"
+
+[params.process]
+    enable = true
+    title = "My Process"
+    subtitle = "Full Process Design"
+
+[params.case_studies]
+    enable = true
+    title = "Projects"
+    subtitle = "Selected projects"
+
+[params.footer]
+    enable = true
+
+# DefaultContentLanguage = "en"
+# SectionPagesMenu = "main"
+# Paginate = 3 # this is set low for demonstrating with dummy content. Set to a higher number
+# googleAnalytics = ""
+# enableRobotsTXT = true
+
+# [sitemap]
+#   changefreq = "monthly"
+#   priority = 0.5
+#   filename = "sitemap.xml"
+
+# [params]
+#   favicon = ""
+#   description = "The last theme you'll ever need. Maybe."
+#   facebook = ""
+#   twitter = "https://twitter.com/Klavierler"
+#   instagram = ""
+#   youtube = ""
+#   github = ""
+#   gitlab = ""
+#   linkedin = ""
+#   # choose a background color from any on this page: http://tachyons.io/docs/themes/skins/ and preface it with "bg-"
+#   background_color_class = "bg-black"
+#   featured_image = "/images/gohugo-default-sample-hero-image.jpg"
+#   recent_posts_number = 10
+
+
+
+# [params]
+
+#     # You can use Markdown syntax for urls [text](//url.to/source) for
+#     # most longer texts.
+
+#     # To provide some metadata for search engines feel free to add a few
+#     # information about you and your website.
+#     name = "Noah Hütter"
+#     description = "My Portfolio"
+
+
+#     # Since this template is static, the contact form uses www.formspree.io as a
+#     # proxy. The form makes a POST request to their servers to send the actual
+#     # email. Visitors can send up to a 1000 emails each month for free.
+#     #
+#     # What you need to do for the setup?
+#     #
+#     # - set your email address under 'email' below
+#     # - upload the generated site to your server
+#     # - send a dummy email youself to confirm your account
+#     # - click the confirm link in the email from www.formspree.io
+#     # - you're done. Happy mailing!
+#     email = "noah@beeblebrox.ch"
+
+#     # Custom assets
+# 	custom_css = []
+# 	custom_js  = []
+
+#     [params.navigation]
+#         brand = "Noah's Portfolio"
+
+#     [params.header]
+#         # Copy your own image into './static/img/'' if you wish
+#         image = "profile.png"
+#         # image = "tux_pitaya-min.png"
+#         name = "Noah Hütter"
+#         subtitle = "Electrical Engineer - Programmer - Gymnast"
+
+#     [params.portfolio]
+#         # All projects defined in their own files. You can find example projects
+#         # at 'exampleSite/data/projects'. Copy the 'projects' folder into the 'data' directory
+#         # at the root of this Hugo site.
+#         # For more informtion take a look at the README.
+#         title = "Projects"
+
+#         [params.portfolio.modal]
+#             client = "Client"
+#             date = "Date"
+#             category = "Category"
+#             buttontext = "Close"
+
+
+#     [params.about]
+#         title = "About"
+#         # The about text is splitted into a left and right column
+#         text = "Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional LESS stylesheets for easy customization."
+        
+
+#     [params.contact]
+#         title = "Contact"
+
+#         # 'error' defines error messages for invalid inputs
+#         [params.contact.form.name]
+#             text = "Name"
+#             error = "Please enter your name."
+
+#         [params.contact.form.email]
+#             text = "Email Address"
+#             error = "Please enter your email address."
+
+#         [params.contact.form.phone]
+#             text = "Phone Number"
+#             error = "Please enter your phone number."
+
+#         [params.contact.form.message]
+#             text = "Message"
+#             error = "Please enter a message."
+
+#         [params.contact.form.button]
+#             text = "Send"
+
+
+#     [params.footer]
+#         copyright = "Published under the Apache License 2.0. Powered by [Hugo](//gohugo.io)."
+
+#         [params.footer.location]
+#             title = "Location"
+#             # Postal address (add as many lines as necessary)
+#             address = ["3481 Melrose Place", "Beverly Hills, CA 90210"]
+
+#         [params.footer.social]
+#             title = "Around the web"
+#             # All icons using Fontawesome's icon font. Look at fortawesome.github.io/Font-Awesome/icons/
+#             # for more icons. The icons are represented by their corresponding
+#             # CSS class.
+#             [[params.footer.social.networks]]
+#                 icon = "fa-github"
+#                 link = "//github.com/noah95/"
+
+#             [[params.footer.social.networks]]
+#                 icon = "fa-twitter"
+#                 link=  "//twitter.com/Klavierler"
+
+#             [[params.footer.social.networks]]
+#                 icon = "fa-linkedin"
+#                 link=  "//linkedin.com/in/noah-hütter-4a8852150"
+
+#             [[params.footer.social.networks]]
+#                 icon = "fa-facebook"
+#                 link=  "//www.facebook.com/profile.php?id=100012645461001"
+
+
+#         [params.footer.credits]
+#             title = "About Freelancer"
+#             text = "Freelance is a free to use, open source Bootstrap theme created by [Start Bootstrap](//startbootstrap.com)."
