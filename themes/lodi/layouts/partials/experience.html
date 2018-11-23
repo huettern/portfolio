@@ -1,0 +1,24 @@
+{{ $experience := .Site.Data.experience }}
+<section data-scroll-index="1">
+  <div class="process">
+    <div class="header">
+        <h1 class="title">{{ .Site.Params.Experience.Title }}</h1>
+        <h2 class="subtitle">{{ .Site.Params.Experience.Subtitle }}</h2>
+    </div>
+    <div id="timeline">
+      {{ range $index, $element := $experience.experience }}
+      <div class="timeline-item clearfix">
+        <div class="timeline-icon"></div>
+        
+        <!-- <div class="timeline-content {{ if eq (mod $index 2) 0 }} right {{ end }}"> -->
+        <div class="timeline-content">
+          <span class="date">{{ $element.timeperiod }}</span>
+          <h6 class="h3 my-2">{{ $element.company }}</h6>
+          <p class="">{{ $element.description }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+  </div>
+</section>
