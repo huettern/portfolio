@@ -11,10 +11,11 @@ pages:
    - chmod 700 ~/.ssh
    # - echo "$SSH_KEY" | tr -d '\r' | ssh-add - > /dev/null
    - ssh-add <(echo "$SSH_KEY" | base64 -d)
-   - echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDI7ZQqZFL67Ez+Kmx9EJ2v6lntZqJdspkA4Ucr6RInKV7J5pKrvAsZReCuwNRaCLr0k+i2yTbdKKzF4KNtUEdY93qCwqWEb1p1+HE1QGK3GuDdR2A24uYuCSkO8mNk+zkkQzR5CKsU1nfCUaPKS9eWvEItr7pjRifvfxddbBjGnKkh5bI+vuwqpMopgjrIxXubhG+Grt9CzfDZ0gg30dMxx5jJ8shCkpkci/F9xbwSGf6I6cYkJh59LmL1n4K4puAIK881k15Vlhtw1nOckVAUWS85noT7Ks+X2mAJDowCvBGVnnZ/t/eSj+w78idQGHXFtvHlKgZZHw2BZwUgh9O7' >> ~/.ssh/known_hosts
+   - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+   - chmod 644 ~/.ssh/known_hosts
   script:
   - hugo
-  - scp public/* beeblebrox-web@beeblebrox.ch:/volume2/web/beeblebrox/
+  - scp -P 42022 public/* beeblebrox-web@beeblebrox.ch:/volume2/web/beeblebrox/
   artifacts:
     paths:
     - public
