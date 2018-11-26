@@ -121,6 +121,8 @@ footer {
 .logo {
   width: 68px;
   display: block;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 section {
