@@ -23,24 +23,6 @@ theme ="lodi"
     # this appears on the top left of the navigation
     logo = "tux_pitaya_round-min-crop.png"
 
-    # Email
-    # email = ""
-
-    # Facebook username
-    # facebook = ""
-
-    # Twitter username
-    # twitter = "asdf"
-
-    # Dribbble username
-    # dribbble = ""
-
-    # LinkedIn URL
-    # linkedin = ""
-    
-    # Medium username
-    # medium = "asdf"
-
 [params.nav]
  	logoenable = false
     enable = true
@@ -60,7 +42,22 @@ theme ="lodi"
     "Please enjoy the rest of my website."]
 
     # Link to your resume, place your PDF in the /static folder
-    resume = "resume.pdf"
+    # resume = "resume.pdf"
+
+    # Email
+    email = "noah@beeblebrox.ch"
+
+    # Facebook username
+    facebook = "https://www.facebook.com/profile.php?id=100012645461001"
+
+    # Twitter username
+    twitter = "https://twitter.com/Klavierler"
+
+    # LinkedIn URL
+    linkedin = "https://www.linkedin.com/in/noah-h%C3%BCtter-4a8852150/"
+    
+    # Medium username
+    github = "https://github.com/noah95"
 
 [params.resume]
     enable = true

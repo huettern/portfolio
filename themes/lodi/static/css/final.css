@@ -93,12 +93,12 @@ footer {
   border-left: 1px solid #F0F0F0;
 }
 
-.icons a:first-child {
-  padding: 4px 4px 4px 0;
-}
-
 .icons a {
+  /*width: 100px;*/
+  text-align: center;
+  font-size: 25px;
   padding: 4px;
+  color: black;
 }
 
 @media all and (max-width: 460px) {
@@ -209,12 +209,13 @@ section {
 
 .icons {
   width: 160px;
+  height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          /*justify-content: space-between;*/
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .download-resume {
