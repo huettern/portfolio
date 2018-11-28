@@ -65,7 +65,8 @@ theme ="lodi"
 [params.resume]
     enable = true
     title = "Skills"
-    subtitle = "From professional to personal"
+    subtitle1 = "From professional.."
+    subtitle2 = "..to social"
 
 [params.experience]
     enable = true
