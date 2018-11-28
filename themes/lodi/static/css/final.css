@@ -247,6 +247,7 @@ section {
 
 .process-item {
   max-width: 300px;
+  width: 300px;
   padding-top: 20px;
 }
 
@@ -281,6 +282,8 @@ section {
 
 .process-item i {
   font-size: 28px;
+  width: 30px;
+  text-align: center;
 }
 
 .process-item p {

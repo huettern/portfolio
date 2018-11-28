@@ -1,0 +1,4 @@
+weight: 3
+title: "Embedded"
+faicon: "cogs"
+description: "Embedded system development and mixed signal processing on DSPs using bare metal C and Real time operation systems on Microchip, ARM and other platforms."
