@@ -23,7 +23,7 @@ testimonial_photo: "nate.jpg"
 testimonial_author: "Nathaniel Benedicto"
 testimonial_subtitle: "Associate Vice President for Events, Ateneo Junior Marketing Association"
 date: 2017-10-15T03:29:08-07:00
-draft: false
+draft: true
 ---
 
 # Context

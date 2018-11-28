@@ -28,7 +28,7 @@ testimonial_photo: "john.jpg"
 testimonial_author: "John Robert Palomo"
 testimonial_subtitle: "Co-founder, Cope"
 date: 2017-10-15T03:29:08-07:00
-draft: false
+draft: true
 ---
 
 # The Challenge
