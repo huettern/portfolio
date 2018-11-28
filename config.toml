@@ -54,12 +54,9 @@ theme ="lodi"
 
     # Each element in this array makes a new <p> tag
     # You can write this text in markdown
-    hero_right = ["some single line ",
-    "content some single line content some single line content some single line content some single line content",
-    "**This is a bold paragraph** and it's amazing.",
-    "This is my [GitHub](https://github.com/xaviablaza). It's pretty cool.",
-    "I also do a lot of coding if you didn't already know.",
-    "I study at XYZ University and I expect to graduate in 2050.",
+    hero_right = ["Highly motivated and hardworking **Electrical Engineering** student with excellent grades in both key modules and maths seeking for a career in research and development with demanding challenges.",
+    "I currently **study** Electrical Engineering and Information Technology in the Master's degree programme at ETH Zurich.",
+    "In my **free time** the fascination of Electronics motivates me to pursue private projects and finance my coffee consumption on freelance colaborations.",
     "Please enjoy the rest of my website."]
 
     # Link to your resume, place your PDF in the /static folder
