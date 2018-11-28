@@ -64,18 +64,13 @@ theme ="lodi"
 
 [params.resume]
     enable = true
-    title = "My Process"
-    subtitle = "Full Process Design"
+    title = "Skills"
+    subtitle = "From professional to personal"
 
 [params.experience]
     enable = true
     title = "Experience"
     subtitle = "Timeline of my Experience"
-
-[params.process]
-    enable = true
-    title = "My Process"
-    subtitle = "Full Process Design"
 
 [params.case_studies]
     enable = true

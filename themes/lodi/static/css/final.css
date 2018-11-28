@@ -279,6 +279,10 @@ section {
   height: 35px;
 }
 
+.process-item i {
+  font-size: 28px;
+}
+
 .process-item p {
   /* I collaborate with s: */
   font-size: 16px;
