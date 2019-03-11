@@ -2,7 +2,7 @@
     <div class="main-case-study">
         <h1 class="title" style="text-align: center;">{{ .Params.case_title }}</h1>
         <h2 class="subtitle" style="text-align: center;">{{ .Params.case_subtitle }}</h2>
-        <img src="img/{{ .Params.case_feature_img }}" alt="">
+        <img src="{{ .Site.BaseURL }}img/{{ .Params.case_feature_img }}" alt="">
         <p class="summary">{{ .Params.case_summary }}</p>
         <div class="case-details">
             <div class="case-details-item">
@@ -13,7 +13,7 @@
                 </p>
             </div>
             <div class="case-details-item">
-                <p><strong>My Role</strong>
+                <p><strong>Roles</strong>
                     {{ range .Params.roles }}
                     <br>{{ . }}
                     {{ end }}
@@ -33,11 +33,7 @@
             {{ range $element := .Params.button_links }}
             <div class="link-div">
                 <a href="{{ $element.link }}" target="blank" class="case-detail-link">
-                    {{ if eq $element.img "download.svg" }}
-                    <img style="top:1.8px;" src="{{ $baseUrl }}svg/{{ $element.img }}">
-                    {{ else }}
-                    <img src="{{ $baseUrl }}svg/{{ $element.img }}">
-                    {{ end }}
+                    <i class="{{ $element.faicon }}"></i>
                     {{ $element.text }}
                 </a>
             </div>

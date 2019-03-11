@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
     <head>
+        {{ partial "head_global.html" . }}
         {{ partial "head_casestudy.html" . }}
     </head>
     <body>
         {{ partial "nav_casestudy.html" . }}
         {{ partial "casestudy_main.html" . }}
+
+        {{ if .Params.Testimonial_enable }}
         {{ partial "testimonial.html" . }}
+        {{ end }}
 
         <section>
             <div class="content-case-study">
