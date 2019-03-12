@@ -1,6 +1,6 @@
 <nav class="main-navigation stuckMenu">
-    <a href="">
-        <img class="logo" src="img/{{.Site.Params.logo}}" alt="{{ .Site.Title }}">
+    <a href="{{ .Site.BaseURL }}">
+        <img class="logo" src="{{ .Site.BaseURL }}img/{{.Site.Params.logo}}" alt="{{ .Site.Title }}">
     </a>
     <div class="sub-navigation">
         <a href="#" class="main-navigation-link" id="about" data-scroll-goto="0">About</a>
