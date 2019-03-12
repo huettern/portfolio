@@ -1,0 +1,23 @@
+image: monachus/hugo
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+pages:
+  before_script:
+   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+   - eval $(ssh-agent -s)
+   - mkdir -p ~/.ssh
+   - chmod 700 ~/.ssh
+   # - echo "$SSH_KEY" | tr -d '\r' | ssh-add - > /dev/null
+   - ssh-add <(echo "$SSH_KEY" | base64 -d)
+   - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+   - chmod 644 ~/.ssh/known_hosts
+  script:
+  - hugo
+  - scp -P 42022 public/* beeblebrox-web@beeblebrox.ch:/volume2/web/beeblebrox/
+  artifacts:
+    paths:
+    - public
+  only:
+  - production
