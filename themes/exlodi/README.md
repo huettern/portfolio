@@ -1,6 +1,6 @@
-# Lodi Theme
+# exLodi Theme
 
-This theme is a Hugo port of [Alexis Collado's portfolio website](http://www.alexiscollado.com). It is meant to be a portfolio theme, with sections for describing yourself, your 
+This theme is based on the [Lodi theme by Xavi Ablaza](https://themes.gohugo.io/hugo-lodi-theme/) which in turn is a Hugo port of [Alexis Collado's portfolio website](http://www.alexiscollado.com). It is meant to be a portfolio theme, with sections for describing yourself, your 
 process, and some case studies.
 
 ![](images/screenshot.png)

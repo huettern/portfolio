@@ -1,7 +1,7 @@
 baseURL = "http://beeblebrox.ch/"
 languageCode = "en-us"
 title = "Noah Hütter Portfolio"
-theme ="lodi"
+theme ="exlodi"
 
 googleAnalytics = "UA-40883435-8"
 
