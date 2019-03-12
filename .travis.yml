@@ -20,6 +20,7 @@ deploy:
   verbose: true
   overwrite: true
   file_glob: true
+  fqdn: beeblebrox.ch
   local-dir: "public/"
 
   on:
