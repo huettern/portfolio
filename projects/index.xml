@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Noah Hütter Portfolio</title>
-    <link>http://beeblebrox.ch/</link>
-    <description>Recent content on Noah Hütter Portfolio</description>
+    <title>Projects on Noah Hütter Portfolio</title>
+    <link>http://beeblebrox.ch/projects/</link>
+    <description>Recent content in Projects on Noah Hütter Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Mar 2019 03:29:08 -0700</lastBuildDate>
     
-	<atom:link href="http://beeblebrox.ch/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://beeblebrox.ch/projects/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

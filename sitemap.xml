@@ -3,12 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://beeblebrox.ch/projects/ba-thesis-diip/</loc>
+    <lastmod>2019-03-11T03:29:08-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://beeblebrox.ch/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://beeblebrox.ch/</loc>
+    <lastmod>2019-03-11T03:29:08-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://beeblebrox.ch/projects/</loc>
+    <lastmod>2019-03-11T03:29:08-07:00</lastmod>
     <priority>0</priority>
   </url>
   
