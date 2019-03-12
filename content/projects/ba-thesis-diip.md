@@ -26,7 +26,7 @@ testimonial_photo: "diip/diip-cover.png"
 testimonial_author: "John Robert Palomo"
 testimonial_subtitle: "Co-founder, Cope"
 date: 2019-03-11T03:29:08-07:00
-draft: true
+draft: false
 ---
 
 # Abstract
