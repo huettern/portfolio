@@ -18,9 +18,7 @@ deploy:
   github-token: $GHTOKEN
   keep-history: true
   verbose: true
-  overwrite: true
-  file_glob: true
-  local-dir: "public/"
+  local-dir: public
 
   on:
     branch: production
