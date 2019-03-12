@@ -13,11 +13,14 @@ script:
 
 deploy:
   provider: pages
+  target-branch: gh-pages
   skip-cleanup: true
   github-token: $GHTOKEN
   keep-history: true
+  verbose: true
   overwrite: true
   file_glob: true
-  file: "public/*"
+  local-dir: "public/"
+
   on:
     branch: production
