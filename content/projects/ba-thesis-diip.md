@@ -2,7 +2,7 @@
 weight: 1
 title: "BA Thesis | diip"
 description: ""
-nav_heading: "Cope Case Study"
+nav_heading: "BA Thesis | diip"
 thumbnail: "diip/diip-cover-thumb.png"
 case_short_title: "FPGA for Enhanced Image Processing"
 case_title: "Distributed FPGA for Enhanced Image Processing"
