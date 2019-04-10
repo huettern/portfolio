@@ -15,14 +15,14 @@ googleAnalytics = "UA-40883435-8"
 
     # head photo
     # This is what appears on the preview when posting this site on Facebook for example
-    description_photo = "tux_pitaya_round-min.png"
+    description_photo = "portrait_800.png"
 
     # favicon image (512x512px), place this in the static/img folder
     favicon = "tux_pitaya_round-min.png"
 
     # logo image (204x204px), place this in the static/img folder
     # this appears on the top left of the navigation
-    logo = "tux_pitaya_round-min-crop.png"
+    logo = "portrait_800.png"
 
 [params.nav]
  	logoenable = false
@@ -32,7 +32,7 @@ googleAnalytics = "UA-40883435-8"
     enable = true
     
     # Place this image in the static/img folder
-    avatar = "tux_pitaya_round-min.png"
+    avatar = "portrait.png"
     subtitle = "Hi! I'm Noah, an electrical engineer from Zurich, Switzerland."
 
     # Each element in this array makes a new <p> tag
