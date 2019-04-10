@@ -1,8 +1,8 @@
 <nav class="main-navigation stuckMenu">
     <a href="{{ .Site.BaseURL }}">
-        <img class="logo" src="{{ .Site.BaseURL }}img/{{.Site.Params.logo}}" alt="My Portfolio">
+        <img class="logo" src="{{ .Site.BaseURL }}img/{{.Site.Params.logo}}" alt="My Portfolio" style="max-width: 100%; border-radius: 50%; ">
     </a>
-    <h5>{{ .Params.nav_heading }}</h5>
+    <h4>{{ .Params.nav_heading }}</h4>
     <div class="sub-navigation">
         <a href="{{ .Site.BaseURL }}" class="main-navigation-link" data-scroll-goto="2">Projects</a>
     </div>
