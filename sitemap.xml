@@ -8,11 +8,6 @@
   </url>
   
   <url>
-    <loc>https://beeblebrox.ch/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://beeblebrox.ch/</loc>
     <lastmod>2019-03-11T03:29:08-07:00</lastmod>
     <priority>0</priority>
@@ -21,6 +16,11 @@
   <url>
     <loc>https://beeblebrox.ch/projects/</loc>
     <lastmod>2019-03-11T03:29:08-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://beeblebrox.ch/categories/</loc>
     <priority>0</priority>
   </url>
   
