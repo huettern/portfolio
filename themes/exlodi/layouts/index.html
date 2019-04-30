@@ -23,6 +23,10 @@
             {{ if .Site.Params.case_studies.enable }}
             {{ partial "case_studies.html" . }}
             {{ end }}
+            
+            {{ if .Site.Params.recent_posts.enable }}
+            {{ partial "recent_posts.html" . }}
+            {{ end }}
 
             {{ if .Site.Params.footer.enable }}
             {{ partial "footer.html" . }}

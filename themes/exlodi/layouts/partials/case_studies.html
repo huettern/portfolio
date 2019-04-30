@@ -6,14 +6,16 @@
         </div>
         <div class="case-studies-wrapper">
             {{ $baseUrl := .Site.BaseURL }}
-            {{ range where .Site.Pages "Kind" "page" }}
-            <div class="case-study-item">
-                <a href="{{ .URL }}"><img src="{{ $baseUrl }}img/{{ .Params.thumbnail }}" alt=""></a>
-                <h4>{{ .Params.case_short_title }}</h4>
-                <h5>{{ .Params.case_subtitle }}</h5>
-                <p>{{ .Params.case_description }}</p>
-                <a href="{{ .URL }}" class="read-more">Read Me</a>
-            </div>
+            {{ range where .Site.Pages "Type" "projects" }}
+                {{ if .Params.case_short_title }}
+                <div class="case-study-item">
+                    <a href="{{ .URL }}"><img src="{{ $baseUrl }}img/{{ .Params.thumbnail }}" alt=""></a>
+                    <h4>{{ .Params.case_short_title }}</h4>
+                    <h5>{{ .Params.case_subtitle }}</h5>
+                    <p>{{ .Params.case_description }}</p>
+                    <a href="{{ .URL }}" class="read-more">Read Me</a>
+                </div>
+                {{ end }}
             {{ end }}
         </div>
     </div>

@@ -126,7 +126,7 @@ footer {
 }
 
 section {
-  padding-top: 70px;
+  padding-top: 68px;
   padding-bottom: 70px;
   border-bottom: 1px solid #F0F0F0;
   padding-left: 30px;
@@ -752,4 +752,59 @@ section {
   color: #04395E !important;
   transition: 0.2s ease-in-out;
   border-bottom: 3px solid #04395E;
+}
+
+/*----------------------------------------------------
+  Recent posts
+  ----------------------------------------------------*/
+
+.recent-posts {
+  max-width: 1000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+/*----------------------------------------------------
+  Single post
+  ----------------------------------------------------*/
+.post-jumbo-img {
+  max-width: 100%;
+}
+
+.content-post {
+  max-width: 1000px;
+  display: block;
+  margin: 0 auto;
+}
+
+.content-post p {
+  /* Each member of our t: */
+  font-family: Roboto;
+  font-size: 19px;
+  color: #676767;
+  letter-spacing: 0;
+  line-height: 30px;
+}
+
+.content-post img {
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.content-post a {
+  color: #04395E;
+  text-decoration: underline;
+}
+
+.content-post h1 {
+  margin: 0;
+  margin-top: 1em;
+  text-align: center;
+  font-size: 4em;
 }
