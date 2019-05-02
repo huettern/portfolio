@@ -9,12 +9,15 @@
 
             {{ range where .Pages "Type" "posts" | first .Site.Params.recent_posts.nposts}}
             <div class="case-study-item">
-                <a class="list-entry-link text-uppercase" href="{{ .Permalink }}">{{ with .Params.image }}<img src="{{ . | absURL }}" alt="post-image" class="img-responsive">{{ end }}
-                </a>
+                <div>
+                    <a class="list-entry-link text-uppercase" href="{{ .Permalink }}">{{ with .Params.image }}<img src="{{ . | absURL }}" alt="post-image" class="img-responsive">{{ end }}
+                    </a>
+                </div>
 
                 <h4>{{ .Title }}</h4>
                 <h5>{{ .Date.Format "Jan 2, 2006" }}</h5>
                 <p class="ml-4">{{ .Description }}</p>
+                <div class="flex-fill"></div>
                 <p class="ml-4">
                     <strong>Tags:</strong>
                     {{ range .Params.tags }}

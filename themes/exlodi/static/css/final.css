@@ -341,23 +341,28 @@ section {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+     -ms-flex-align: stretch;
+        align-items: stretch;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+     -ms-flex-pack: justify;
+  justify-content: flex-start;
 }
 
 .case-study-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   max-width: 300px;
   margin-top: 45px;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  position: relative;
 }
 
 .case-study-item h4 {
   font-size: 26px;
   font-weight: 300;
   margin: 0;
-  line-height: 1.3em;
   margin-bottom: 0.8em;
 }
 
@@ -366,22 +371,22 @@ section {
   font-weight: 700;
   color: #5A5A5A;
   margin: 0;
-  line-height: 0.3em;
   text-transform: uppercase;
+  margin-bottom: 1em;
 }
 
 .case-study-item p {
   font-size: 16px;
   color: #777777;
   letter-spacing: 0;
-  line-height: 1.8em;
 }
-
+.flex-fill {
+  flex: 1 0 auto;
+}
 .read-more {
-  display: inline-block;
+  padding: 1.5em 0;
   width: 100%;
   border: solid 2px #E1E1E1;
-  padding: 18px 0;
   text-align: center;
   color: #04395E;
   font-weight: 500;
@@ -467,6 +472,8 @@ section {
 
 .case-study-item img {
   max-width: 100%;
+  margin: 0 auto;
+  margin-bottom: 1em;
 }
 
 .case-details {
