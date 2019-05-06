@@ -29,7 +29,7 @@ sudo apt install curl u-boot-tools libncurses-dev
 For educational build purposes, the Makefile was extended to build each component seperately.
 This guide will go through all components and briefly explain what they are needed for.
 
-### 1. Create FSBL
+### Create FSBL
 Requires: 
 - Hardware definition exported from Vivado HLx.
 Generates: 
@@ -43,7 +43,7 @@ rm -r build/*.fsbl
 make fsbl
 ```
 
-### 2. Devicetree source
+### Devicetree source
 Requires: 
 - Hardware definition
 - Devicetree sources download from Xilinx repository
@@ -61,7 +61,7 @@ rm -r build/*.tree
 make dts
 ```
 
-### 3. Linux Kernel
+### Linux Kernel
 Requires: 
 - Nothing
 
@@ -84,7 +84,7 @@ make -C build/linux-4.14 ARCH=arm CFLAGS="-O2 -march=armv7-a \
  CROSS_COMPILE=arm-linux-gnueabihf- UIMAGE_LOADADDR=0x8000 uImage modules
 ```
 
-### 4. U Boot
+### U Boot
 Requires: 
 - Nothing
 
@@ -99,7 +99,7 @@ rm -r build/u-boot*
 make uboot
 ```
 
-### 5. Devicetree blob
+### Devicetree blob
 Requires: 
 - `uImage`
 - Devicetree source
@@ -114,7 +114,7 @@ rm -r build/devicetree*
 make dtb
 ```
 
-### 6. Boot image
+### Boot image
 Requires: 
 - FSBL
 - Bit stream
@@ -129,7 +129,7 @@ Now the three binaries can be tied to a single binary image.
 rm -r build/boot.bin
 make bootbin
 ```
-### 7. uEnvt.txt
+### uEnvt.txt
 Requires: 
 - Linux compiled
 - dtb compiled
@@ -145,7 +145,7 @@ rm -r build/uEnv.txt
 make uenv
 ```
 
-### 7. Copy contents to SD-Card
+### Copy contents to SD-Card
 
 Create two partitions on a SD-Card:
 1. fat32 1.00GiB label:BOOT Flags:boot
@@ -157,7 +157,7 @@ Copy the following files on the boot partition:
 - uImage
 - uEnv.txt
 
-### 8. First Boot!
+### First Boot!
 Connect a serial console and power up the board.
 Hit a key to interrupt u-boot automatic boot process.
 To check if the uImage and devicetree are correct issue the following commands:
@@ -174,7 +174,7 @@ bootm 0x2080000 - 0x2000000
 At this point the kernel should start but fail with a kernel panic because no `init` was found.
 For that we next generate the rootfs.
 
-### 9. Busybox
+### Busybox
 First we try the smallest rootf available: Busybox.
 To download, untar and build, run:
 

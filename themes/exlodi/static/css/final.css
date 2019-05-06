@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css?family=Jaldi|Open+Sans');
+
 * {
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
@@ -7,7 +10,7 @@
 
 body {
   font-size: 16px;
-  font-family: Roboto;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -24,6 +27,14 @@ a:hover {
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Jaldi', sans-serif;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
 }
 
 footer {
@@ -224,7 +235,6 @@ section {
   margin-top: 20px;
   background: #04395E;
   /* Download Resume: */
-  font-family: Roboto;
   font-size: 15px;
   /*padding: 15px 50px;*/
   color: #C3D5FF;
@@ -237,13 +247,11 @@ section {
 
 .title {
   /* My Process: */
-  font-family: Roboto;
   font-weight: bold;
   margin: 0;
   font-size: 44px;
   color: #000000;
   letter-spacing: 0;
-  line-height: 0.4em;
 }
 
 .process-item {
@@ -453,7 +461,6 @@ section {
 
 .main-case-study .subtitle {
   /* Mobile App Design: */
-  font-family: Roboto;
   font-weight: bold;
   font-size: 22px;
   color: #04395E;
@@ -461,8 +468,6 @@ section {
 }
 
 .main-case-study .summary {
-  /* The objective of thi: */
-  font-family: Roboto;
   font-weight: 300;
   font-size: 24px;
   color: #000000;
@@ -654,8 +659,6 @@ section {
 }
 
 .content-case-study p {
-  /* Each member of our t: */
-  font-family: Roboto;
   font-size: 19px;
   color: #676767;
   letter-spacing: 0;
@@ -705,8 +708,7 @@ section {
 
 @media all and (max-width:1040px) {
   .case-study-item {
-    max-width: 48%;
-    margin-top: 40px;
+    max-width: 40%;
   }
   .case-studies-wrapper {
     margin-top: 0;
@@ -716,7 +718,6 @@ section {
 @media all and (max-width:980px) {
   .hero-right {
     width: 100%;
-    margin-top: 30px;
   }
   .process-item {
     max-width: 45%;
@@ -726,7 +727,6 @@ section {
 @media all and (max-width: 728px) {
   .case-study-item {
     max-width: 100%;
-    margin-top: 40px;
   }
   .case-study-item:first-of-type {
     margin-top: 13px;
@@ -791,8 +791,6 @@ section {
 }
 
 .content-post p {
-  /* Each member of our t: */
-  font-family: Roboto;
   font-size: 19px;
   color: #676767;
   letter-spacing: 0;
@@ -814,4 +812,17 @@ section {
   margin-top: 1em;
   text-align: center;
   font-size: 4em;
+}
+
+/* Code box */
+.highlight pre {
+    padding: 0.5em;
+}
+
+#TableOfContents ul {
+  list-style-type: none;
+}
+/* Fix indentation of all the toc */
+#TableOfContents ul:first-child {
+    padding-left: 0;
 }

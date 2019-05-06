@@ -16,9 +16,9 @@
 
                 <h4>{{ .Title }}</h4>
                 <h5>{{ .Date.Format "Jan 2, 2006" }}</h5>
-                <p class="ml-4">{{ .Description }}</p>
+                <p>{{ .Description }}</p>
                 <div class="flex-fill"></div>
-                <p class="ml-4">
+                <p>
                     <strong>Tags:</strong>
                     {{ range .Params.tags }}
                         #{{ . }}

@@ -5,6 +5,8 @@ theme ="exlodi"
 pygmentsCodeFences=true
 googleAnalytics = "UA-40883435-8"
 
+paginate = 2
+
 [params]
     # head theme color
     theme_color = "#00ff00"
