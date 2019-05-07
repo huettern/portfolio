@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#00ff00">
+<meta name="description" content="My Portfolio">
+<meta property="og:description" content="My Portfolio">
+<meta name="twitter:description" content="My Portfolio">
+<meta property="og:image" content="https://beeblebrox.ch/img/portrait_800.png">
+<meta name="twitter:image" content="https://beeblebrox.ch/img/portrait_800.png">
+
+<title>Linux on Zynq</title>
+
+<link rel="icon" href="https://beeblebrox.ch/img/tux_pitaya_round-min.png" type="image/x-icon">
+<link rel="shortcut icon" href="https://beeblebrox.ch/img/tux_pitaya_round-min.png" type="image/x-icon">
+
+
+
+<link rel="stylesheet" href="https://beeblebrox.ch/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="
+sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://beeblebrox.ch/css/final.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
+
+
+
+<script src="https://beeblebrox.ch/js/jquery.min.js"></script>
+<script src="https://beeblebrox.ch/js/bootstrap.min.js"></script>
+<script src="https://beeblebrox.ch/js/main.js"></script>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-40883435-8', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </head>
+    <body>
+        <a id="bttbutton" class="bg-dark"></a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+  <a class="navbar-brand" href="/">beeblebrox.ch</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">   
+
+    </ul>
+
+    <ul class="navbar-nav">      
+        
+
+        
+        
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/posts/">Blog posts</a>
+            </li>
+          
+        
+
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+        
+            <div class="jumbotron" style="background: url(https://beeblebrox.ch/img/pitaya/pitaya-head.jpeg) no-repeat center center;">
+            </div>
+        
+
+        <section>
+            <div class="content-post">
+            <h1>Linux on Zynq</h1>
+            <p style="text-align:center;margin-top: 0.5em;">
+                <strong>Posted on</strong> Apr 30nd 2019 
+                <strong>By</strong> Noah Hütter 
+            </p>
+
+            <hr>
+            <h2>Table of Contents</h2>
+            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#prerequirements">Prerequirements</a></li>
+<li><a href="#step-by-step-build">Step-by-step build</a>
+<ul>
+<li><a href="#create-fsbl">Create FSBL</a></li>
+<li><a href="#devicetree-source">Devicetree source</a></li>
+<li><a href="#linux-kernel">Linux Kernel</a></li>
+<li><a href="#u-boot">U Boot</a></li>
+<li><a href="#devicetree-blob">Devicetree blob</a></li>
+<li><a href="#boot-image">Boot image</a></li>
+<li><a href="#uenvt-txt">uEnvt.txt</a></li>
+<li><a href="#copy-contents-to-sd-card">Copy contents to SD-Card</a></li>
+<li><a href="#first-boot">First Boot!</a></li>
+<li><a href="#busybox">Busybox</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+            
+
+<p><em>Disclaimer: This code is largely copied from <a href="https://github.com/pavel-demin/red-pitaya-notes">https://github.com/pavel-demin/red-pitaya-notes</a>, licensed under MIT license.</em></p>
+
+<h2 id="prerequirements">Prerequirements</h2>
+
+<p><em>DO NOT WORK ON A SHARED FOLDER INSIDE VIRTUALBOX</em>
+It will get messy, because the Linux kernel build uses a case sensitive file system, which Mac does not provide.</p>
+
+<p>Fix gmake:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ln -s /usr/bin/make /usr/bin/gmake</code></pre></div>
+<p>Install some tools:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install curl u-boot-tools libncurses-dev</code></pre></div>
+<h2 id="step-by-step-build">Step-by-step build</h2>
+
+<p>For educational build purposes, the Makefile was extended to build each component seperately.
+This guide will go through all components and briefly explain what they are needed for.</p>
+
+<h3 id="create-fsbl">Create FSBL</h3>
+
+<p>Requires:
+- Hardware definition exported from Vivado HLx.
+Generates:
+- <code>build/name.fsbl/executable.elf</code></p>
+
+<p>This generates the source code and binary for the first level bootloader that is executed after power on.
+After project creation, the fsbl is compiled and the binary written.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -r build/*.fsbl
+make fsbl</code></pre></div>
+<h3 id="devicetree-source">Devicetree source</h3>
+
+<p>Requires:
+- Hardware definition
+- Devicetree sources download from Xilinx repository</p>
+
+<p>Generates:
+- Device tree sources <code>dts</code></p>
+
+<p>The devicetree files from Xilinx are downloaded and a device tree project created from the hardware definition files.
+From these two sources, a set of <code>dts</code> (device tree sources) files are generated.
+Finally the makefile applies a patch to some output files.
+The patch file is generates by this command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">diff -rupN pcw.dtsi pcw.dtsi.new &gt; devicetree.patch
+rm -r build/*.tree
+make dts</code></pre></div>
+<h3 id="linux-kernel">Linux Kernel</h3>
+
+<p>Requires:
+- Nothing</p>
+
+<p>Generates:
+- <code>uImage</code></p>
+
+<p>Now it is time to pull a vanilla Linux kernel, uncompress the sources, apply some patches, copy some config and finally build the kernel. Issue the following command and go for a walk:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -r build/linux*
+make uimage</code></pre></div>
+<p>or if the sources are already downloaded and you don&rsquo;t want to clean before build:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make -C build/linux-4.14 ARCH<span style="color:#f92672">=</span>arm xilinx_zynq_defconfig
+make -C build/linux-4.14 ARCH<span style="color:#f92672">=</span>arm CFLAGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-O2 -march=armv7-a \
+</span><span style="color:#e6db74"> -mcpu=cortex-a9 -mtune=cortex-a9 -mfpu=neon -mfloat-abi=hard&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -j <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> CROSS_COMPILE<span style="color:#f92672">=</span>arm-linux-gnueabihf- UIMAGE_LOADADDR<span style="color:#f92672">=</span>0x8000 uImage modules</code></pre></div>
+<h3 id="u-boot">U Boot</h3>
+
+<p>Requires:
+- Nothing</p>
+
+<p>Generates:
+- <code>u-boot.elf</code></p>
+
+<p>The bootloader is build from source pulled from Xilinxed repositoriers.
+Before build, some config files are copied and patches applied.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -r build/u-boot*
+make uboot</code></pre></div>
+<h3 id="devicetree-blob">Devicetree blob</h3>
+
+<p>Requires:
+- <code>uImage</code>
+- Devicetree source</p>
+
+<p>Generates:
+- <code>devicetree.dtb</code></p>
+
+<p>Using the device tree sources generated previously, the devicetree compiler is used to generate the devicetree blob.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -r build/devicetree*
+make dtb</code></pre></div>
+<h3 id="boot-image">Boot image</h3>
+
+<p>Requires:
+- FSBL
+- Bit stream
+- U Boot</p>
+
+<p>Generates:
+- <code>boot.bin</code></p>
+
+<p>Now the three binaries can be tied to a single binary image.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -r build/boot.bin
+make bootbin</code></pre></div>
+<h3 id="uenvt-txt">uEnvt.txt</h3>
+
+<p>Requires:
+- Linux compiled
+- dtb compiled</p>
+
+<p>Generates:
+- uEnvt.txt</p>
+
+<p>For u-boot to know what linux version to load we have to generate a uEnv.txt file.
+This is done by running the following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -r build/uEnv.txt
+make uenv</code></pre></div>
+<h3 id="copy-contents-to-sd-card">Copy contents to SD-Card</h3>
+
+<p>Create two partitions on a SD-Card:
+1. fat32 1.00GiB label:BOOT Flags:boot
+2. ext4 label:root</p>
+
+<p>Copy the following files on the boot partition:
+- boot.bin
+- devicetree.dtb
+- uImage
+- uEnv.txt</p>
+
+<h3 id="first-boot">First Boot!</h3>
+
+<p>Connect a serial console and power up the board.
+Hit a key to interrupt u-boot automatic boot process.
+To check if the uImage and devicetree are correct issue the following commands:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mmcinfo
+fatload mmc <span style="color:#ae81ff">0</span> 0x2080000 uImage
+fatload mmc <span style="color:#ae81ff">0</span> 0x2000000 devicetree.dtb
+iminfo 0x2000000
+iminfo 0x2080000
+setenv bootargs console<span style="color:#f92672">=</span>ttyPS0,115200 root<span style="color:#f92672">=</span>/dev/mmcblk0p2 ro rootfstype<span style="color:#f92672">=</span>ext4 earlyprintk rootwait
+bootm 0x2080000 - 0x2000000</code></pre></div>
+<p>At this point the kernel should start but fail with a kernel panic because no <code>init</code> was found.
+For that we next generate the rootfs.</p>
+
+<h3 id="busybox">Busybox</h3>
+
+<p>First we try the smallest rootf available: Busybox.
+To download, untar and build, run:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make busybox</code></pre></div>
+<p>To modify busybox and build manually:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd build/busybox-*
+make -j4 ARCH<span style="color:#f92672">=</span>arm CROSS_COMPILE<span style="color:#f92672">=</span>arm-linux-gnueabihf- menuconfig
+make -j4 ARCH<span style="color:#f92672">=</span>arm INSTALL_PATH<span style="color:#f92672">=</span>build/ install</code></pre></div>
+<p>Now copy the installed busybox and some install scripts to the root partition of the SD-card.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./scripts/busybox-sdcard.sh /link/to/sdcard/root/</code></pre></div>
+<p>We should now be able bring up the network!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ifconfig eth0 up
+udhcpc -i eth0 -p /var/run/dhcpClient-eth0.pid
+ifconfig eth0 <span style="color:#ae81ff">192</span>.168.0.87 netmask <span style="color:#ae81ff">255</span>.255.255.0
+route add default gw <span style="color:#ae81ff">192</span>.168.0.1
+ping <span style="color:#ae81ff">8</span>.8.8.8</code></pre></div>
+            </div>
+        </section>
+
+        
+        <footer>
+    
+    
+</footer>
+        
+    </body>
+</html>

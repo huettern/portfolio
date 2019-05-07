@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css?family=Jaldi|Open+Sans');
+
 * {
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
@@ -5,9 +8,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  /*scroll-behavior: smooth;*/
+}
+
 body {
   font-size: 16px;
-  font-family: Roboto;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -25,6 +32,15 @@ a:hover {
           transform: translateY(-3px);
 
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Jaldi', sans-serif;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
 
 footer {
   padding: 30px 30px 30px 30px;
@@ -126,11 +142,16 @@ footer {
 }
 
 section {
-  padding-top: 70px;
+  padding-top: 68px;
   padding-bottom: 70px;
   border-bottom: 1px solid #F0F0F0;
   padding-left: 30px;
   padding-right: 30px;
+}
+
+#hero-section {
+  padding-top: 120px; 
+  background-repeat: repeat-x;
 }
 
 .hero {
@@ -187,6 +208,10 @@ section {
 
 .hero-right {
   width: 500px;
+  background: white;
+  border-radius: 2px;
+  padding: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
 }
 
 .hero-right p {
@@ -224,7 +249,6 @@ section {
   margin-top: 20px;
   background: #04395E;
   /* Download Resume: */
-  font-family: Roboto;
   font-size: 15px;
   /*padding: 15px 50px;*/
   color: #C3D5FF;
@@ -237,13 +261,11 @@ section {
 
 .title {
   /* My Process: */
-  font-family: Roboto;
   font-weight: bold;
   margin: 0;
   font-size: 44px;
   color: #000000;
   letter-spacing: 0;
-  line-height: 0.4em;
 }
 
 .process-item {
@@ -341,23 +363,28 @@ section {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+     -ms-flex-align: stretch;
+        align-items: stretch;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+     -ms-flex-pack: justify;
+  justify-content: flex-start;
 }
 
 .case-study-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   max-width: 300px;
   margin-top: 45px;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  position: relative;
 }
 
 .case-study-item h4 {
   font-size: 26px;
   font-weight: 300;
   margin: 0;
-  line-height: 1.3em;
   margin-bottom: 0.8em;
 }
 
@@ -366,22 +393,22 @@ section {
   font-weight: 700;
   color: #5A5A5A;
   margin: 0;
-  line-height: 0.3em;
   text-transform: uppercase;
+  margin-bottom: 1em;
 }
 
 .case-study-item p {
   font-size: 16px;
   color: #777777;
   letter-spacing: 0;
-  line-height: 1.8em;
 }
-
+.flex-fill {
+  flex: 1 0 auto;
+}
 .read-more {
-  display: inline-block;
+  padding: 1.5em 0;
   width: 100%;
   border: solid 2px #E1E1E1;
-  padding: 18px 0;
   text-align: center;
   color: #04395E;
   font-weight: 500;
@@ -448,7 +475,6 @@ section {
 
 .main-case-study .subtitle {
   /* Mobile App Design: */
-  font-family: Roboto;
   font-weight: bold;
   font-size: 22px;
   color: #04395E;
@@ -456,8 +482,6 @@ section {
 }
 
 .main-case-study .summary {
-  /* The objective of thi: */
-  font-family: Roboto;
   font-weight: 300;
   font-size: 24px;
   color: #000000;
@@ -467,13 +491,15 @@ section {
 
 .case-study-item img {
   max-width: 100%;
+  margin: 0 auto;
+  margin-bottom: 1em;
 }
 
 .case-details {
   margin: 0;
-  padding: 0;
+  padding-left: 8%;
+  padding-right: 8%;
   display: flex;
-  max-width: 700px;
   list-style-type: none;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -481,7 +507,7 @@ section {
 
 .case-links {
   margin-top: 26px;
-  padding-bottom: 30px;
+  text-align: center;
 }
 
 .link-div {
@@ -647,8 +673,6 @@ section {
 }
 
 .content-case-study p {
-  /* Each member of our t: */
-  font-family: Roboto;
   font-size: 19px;
   color: #676767;
   letter-spacing: 0;
@@ -666,8 +690,7 @@ section {
 }
 
 .content-case-study h1 {
-  margin: 0;
-  margin-top: 2.4em;
+  
 }
 
 @media all and (max-width: 513px) {
@@ -698,8 +721,7 @@ section {
 
 @media all and (max-width:1040px) {
   .case-study-item {
-    max-width: 48%;
-    margin-top: 40px;
+    max-width: 40%;
   }
   .case-studies-wrapper {
     margin-top: 0;
@@ -709,7 +731,7 @@ section {
 @media all and (max-width:980px) {
   .hero-right {
     width: 100%;
-    margin-top: 30px;
+    box-shadow: none;
   }
   .process-item {
     max-width: 45%;
@@ -719,7 +741,6 @@ section {
 @media all and (max-width: 728px) {
   .case-study-item {
     max-width: 100%;
-    margin-top: 40px;
   }
   .case-study-item:first-of-type {
     margin-top: 13px;
@@ -752,4 +773,139 @@ section {
   color: #04395E !important;
   transition: 0.2s ease-in-out;
   border-bottom: 3px solid #04395E;
+}
+
+/*----------------------------------------------------
+  Recent posts
+  ----------------------------------------------------*/
+
+.recent-posts {
+  max-width: 1000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+/*----------------------------------------------------
+  Single post
+  ----------------------------------------------------*/
+.post-jumbo-img {
+  max-width: 100%;
+}
+
+.content-post {
+  max-width: 1000px;
+  display: block;
+  margin: 0 auto;
+}
+
+.content-post p {
+  font-size: 19px;
+  color: #676767;
+  letter-spacing: 0;
+  line-height: 30px;
+}
+
+.content-post img {
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.content-post a {
+  color: #04395E;
+  text-decoration: underline;
+}
+
+.content-post h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 4em;
+}
+
+/* Code box */
+.highlight pre {
+    padding: 0.5em;
+}
+
+#TableOfContents ul {
+  list-style-type: none;
+}
+/* Fix indentation of all the toc */
+#TableOfContents ul:first-child {
+    padding-left: 0;
+}
+
+
+/*----------------------------------------------------
+  Back to top button
+  ----------------------------------------------------*/
+#bttbutton {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+#bttbutton::after {
+  content: "\f106";
+  font-family: 'Font Awesome\ 5 Free';
+  font-weight: 900;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+#bttbutton:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+#bttbutton:active {
+  background-color: #555;
+}
+#bttbutton.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*----------------------------------------------------
+  Nav
+  ----------------------------------------------------*/
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+
+/*----------------------------------------------------
+  404
+  ----------------------------------------------------*/
+.error-template {padding: 40px 15px;text-align: center;}
+.error-actions {margin-top:15px;margin-bottom:15px;}
+.error-actions .btn { margin-right:10px; }
+
+/*----------------------------------------------------
+  Jumbotron
+  ----------------------------------------------------*/
+.jumbotron {
+  background-size: 100%;
+  border-radius: 0;
+  min-height: 400px;
+}
+
+.posts-wrapper {
+  background-color: rgba(52, 58, 64, 0.02);
+  padding: 0.4em;
+  margin-left: 4em;
+  margin-right: 4em;
 }

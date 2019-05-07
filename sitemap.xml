@@ -8,8 +8,42 @@
   </url>
   
   <url>
+    <loc>https://beeblebrox.ch/posts/</loc>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://beeblebrox.ch/tags/fpga/</loc>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://beeblebrox.ch/tags/linux/</loc>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://beeblebrox.ch/posts/pitaya-linux/</loc>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://beeblebrox.ch/</loc>
-    <lastmod>2019-03-11T03:29:08-07:00</lastmod>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://beeblebrox.ch/tags/redpitaya/</loc>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://beeblebrox.ch/tags/</loc>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -20,12 +54,12 @@
   </url>
   
   <url>
-    <loc>https://beeblebrox.ch/categories/</loc>
-    <priority>0</priority>
+    <loc>https://beeblebrox.ch/posts/pitaya-fs-hello-ps/</loc>
+    <lastmod>2017-12-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://beeblebrox.ch/tags/</loc>
+    <loc>https://beeblebrox.ch/categories/</loc>
     <priority>0</priority>
   </url>
   
