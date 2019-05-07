@@ -5,12 +5,21 @@
     </head>
     <body>
         {{ partial "nav.html" . }}
+        {{ partial "casestudy_main.html" . }}
+
+        {{ if .Params.Testimonial_enable }}
+        {{ partial "testimonial.html" . }}
+        {{ end }}
 
         <section>
             <div class="content-case-study">
                 {{ .Content }}
             </div>
         </section>
+
+        {{ if .Site.Params.case_studies.enable }}
+        {{ partial "case_studies.html" . }}
+        {{ end }}
 
         {{ if .Site.Params.footer.enable }}
         {{ partial "footer.html" . }}

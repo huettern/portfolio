@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
     <head>
-        {{ partial "head_global.html" . }}
+        {{ partial "head.html" . }}
     </head>
     <body>
-        {{ partial "nav_blog.html" . }}
+        {{ partial "nav.html" . }}
 
         <section>
             {{ with .Params.jumbo }}<img src="{{ . | absURL }}" alt="post-image" class="img-responsive post-jumbo-img">{{ end }}
@@ -25,7 +25,5 @@
         {{ if .Site.Params.footer.enable }}
         {{ partial "footer.html" . }}
         {{ end }}
-
-        {{ partial "scripts.html" . }}
     </body>
 </html>
