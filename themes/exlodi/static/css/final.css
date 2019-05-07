@@ -503,9 +503,9 @@ section {
 
 .case-details {
   margin: 0;
-  padding: 0;
+  padding-left: 8%;
+  padding-right: 8%;
   display: flex;
-  max-width: 700px;
   list-style-type: none;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -513,7 +513,7 @@ section {
 
 .case-links {
   margin-top: 26px;
-  padding-bottom: 30px;
+  text-align: center;
 }
 
 .link-div {
@@ -696,8 +696,7 @@ section {
 }
 
 .content-case-study h1 {
-  margin: 0;
-  margin-top: 2.4em;
+  
 }
 
 @media all and (max-width: 513px) {
