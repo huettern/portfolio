@@ -5,7 +5,7 @@ layout: post
 date: "2019-04-30"
 tags: ["Linux", "FPGA","Redpitaya"]
 category: ["zynq","zynq_linux"]
-image: "img/pitaya/pitaya-block.jpeg"
+image: "img/pitaya/pitaya-tux.png"
 jumbo: "img/pitaya/pitaya-head.jpeg"
 description: "In this post I will show you how to compile and install a vanilla Linux kernel and root file system on Zynq SoC."
 ---
