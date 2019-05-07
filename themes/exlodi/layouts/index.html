@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
     <head>
-        {{ partial "head_global.html" . }}
         {{ partial "head.html" . }}
     </head>
     <body>
+        <a id="bttbutton" class="bg-dark"></a>
         <div>
             {{ if .Site.Params.nav.enable }}
             {{ partial "nav.html" . }}
@@ -23,13 +23,14 @@
             {{ if .Site.Params.case_studies.enable }}
             {{ partial "case_studies.html" . }}
             {{ end }}
+            
+            {{ if .Site.Params.recent_posts.enable }}
+            {{ partial "recent_posts.html" . }}
+            {{ end }}
 
             {{ if .Site.Params.footer.enable }}
             {{ partial "footer.html" . }}
             {{ end }}
         </div>
-
-        {{ partial "scripts.html" . }}
-
     </body>
 </html>

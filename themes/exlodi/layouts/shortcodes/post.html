@@ -1,0 +1,39 @@
+
+{{/*
+
+Print a list or a single post
+
+Usage:
+  # Get a list of posts in a category
+    {{< post category="zynq" >}}
+
+  # Get a single post by its file name
+    {{< post name="pitaya-linux.md" >}}
+
+*/}}
+
+<div class="posts-wrapper">
+  {{ if .IsNamedParams }}
+    {{ if .Get "category" }}
+      {{ $cat := .Get "category" }}
+        <hr>
+        <dl>
+        {{ range where .Site.Pages "Type" "posts" | first 5 }}
+          {{ if in .Params.category $cat }}
+              <dt><a href="{{ .URL }}">{{ .Title }}</a></dt>
+              <dd>{{ .Description | markdownify }}</dd>
+              <hr>
+          {{ end }}
+        {{ end }}
+        </dl>
+    {{ else }}
+        {{ $name := .Get "name" }}
+        {{ with .Site.GetPage $name }}
+          <hr>
+          <dt><a href="{{ .URL }}">{{ .Title }}</a></dt>
+          <dd>{{ .Description | markdownify }}</dd>
+          <hr>
+        {{ end }}
+    {{ end }}
+  {{ end }}
+</div>

@@ -6,26 +6,21 @@
     <body>
         <a id="bttbutton" class="bg-dark"></a>
         {{ partial "nav.html" . }}
+        {{ partial "casestudy_main.html" . }}
 
-        {{ with .Params.jumbo }}
-            <div class="jumbotron" style="background-image: url({{ . | absURL }});">
-            </div>
+        {{ if .Params.Testimonial_enable }}
+        {{ partial "testimonial.html" . }}
         {{ end }}
 
         <section>
-
-            <div class="content-post">
-            <h1>{{ .Title }}</h1>
-            <p style="text-align:center;margin-top: 0.5em;">
-                {{ .Params.subtitle }} 
-            </p>
-
-            <hr>
-
-            {{ .Content }}
-
+            <div class="content-case-study">
+                {{ .Content }}
             </div>
         </section>
+
+        {{ if .Site.Params.case_studies.enable }}
+        {{ partial "case_studies.html" . }}
+        {{ end }}
 
         {{ if .Site.Params.footer.enable }}
         {{ partial "footer.html" . }}

@@ -1,0 +1,34 @@
+<section id="recentposts">
+    <div class="recent-posts">
+        <div class="header">
+            <h1 class="title">{{ .Site.Params.recent_posts.Title }}</h1>
+            <h2 class="subtitle">{{ .Site.Params.recent_posts.Subtitle }}</h2>
+        </div>
+        <div class="case-studies-wrapper">
+            {{ $baseUrl := .Site.BaseURL }}
+
+            {{ range where .Pages "Type" "posts" | first .Site.Params.recent_posts.nposts}}
+            <div class="case-study-item">
+                <div>
+                    <a class="list-entry-link text-uppercase" href="{{ .Permalink }}">{{ with .Params.image }}<img src="{{ . | absURL }}" alt="post-image" class="img-responsive">{{ end }}
+                    </a>
+                </div>
+
+                <h4>{{ .Title }}</h4>
+                <h5>{{ .Date.Format "Jan 2, 2006" }}</h5>
+                <p>{{ .Description }}</p>
+                <div class="flex-fill"></div>
+                <p>
+                    <strong>Tags:</strong>
+                    {{ range .Params.tags }}
+                        #{{ . }}
+                    {{ end }}
+                </p>
+                <a href="{{ .URL }}" class="read-more">Read Me</a>
+            </div>
+            {{ end }}
+
+            
+        </div>
+    </div>
+</section>

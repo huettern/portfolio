@@ -7,23 +7,24 @@
         <a id="bttbutton" class="bg-dark"></a>
         {{ partial "nav.html" . }}
 
+
         {{ with .Params.jumbo }}
-            <div class="jumbotron" style="background-image: url({{ . | absURL }});">
+            <div class="jumbotron" style="background: url({{ . | absURL }}) no-repeat center center;">
             </div>
         {{ end }}
 
         <section>
-
             <div class="content-post">
             <h1>{{ .Title }}</h1>
             <p style="text-align:center;margin-top: 0.5em;">
-                {{ .Params.subtitle }} 
+                <strong>Posted on</strong> {{ .Date.Format "Jan 2nd 2006" }} 
+                <strong>By</strong> {{ .Params.Author }} 
             </p>
 
             <hr>
-
+            <h2>Table of Contents</h2>
+            {{.TableOfContents}}
             {{ .Content }}
-
             </div>
         </section>
 

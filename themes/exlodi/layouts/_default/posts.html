@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+    <head>
+        {{ partial "head.html" . }}
+    </head>
+    <body>
+        {{ partial "nav.html" . }}
+        
+
+
+        <div class="container">
+            {{ range where .Pages "Type" "posts" }}
+                <div class="row">
+
+                    <div clas="col-sm">
+                        <a class="" href="{{ .Permalink }}">{{ with .Params.image }}<img src="{{ . | absURL }}" alt="post-image" class="">{{ end }}
+                            </a>
+                    </div>
+                    <div clas="col-sm">
+                        <h4>{{ .Title }}</h4>
+                        <h5>{{ .Date.Format "Jan 2, 2006" }}</h5>
+                        <p class="">{{ .Description }}</p>   
+                    </div>
+                    <!-- <div clas="col-sm">
+                        <div>
+                            <a class="" href="{{ .Permalink }}">{{ with .Params.image }}<img src="{{ . | absURL }}" alt="post-image" class="">{{ end }}
+                            </a>
+                        </div>
+                    </div>
+
+                    <div clas="col-sm">
+                        <h4>{{ .Title }}</h4>
+                        <h5>{{ .Date.Format "Jan 2, 2006" }}</h5>
+                        <p class="">{{ .Description }}</p>
+                        <div class=""></div>
+                        <p class="">
+                            <strong>Tags:</strong>
+                            {{ range .Params.tags }}
+                                #{{ . }}
+                            {{ end }}
+                        </p>
+                        <a href="{{ .URL }}" class="read-more">Read Me</a>
+                    </div> -->
+                </div>
+            {{ end }}
+
+        </div>
+
+
+
+        {{ if .Site.Params.footer.enable }}
+        {{ partial "footer.html" . }}
+        {{ end }}
+
+        {{ partial "scripts.html" . }}
+    </body>
+</html>

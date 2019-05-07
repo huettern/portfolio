@@ -1,6 +1,7 @@
 ---
 weight: 1
 title: "BA Thesis | diip"
+layout: project
 description: ""
 nav_heading: "BA Thesis | diip"
 thumbnail: "diip/diip-cover-thumb.png"
