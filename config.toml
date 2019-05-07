@@ -34,6 +34,7 @@ paginate = 2
     enable = true
     
     # Place this image in the static/img folder
+    background = "bgnd2.png"
     avatar = "portrait.png"
     subtitle = "Hi! I'm Noah, an electrical engineer from Zurich, Switzerland."
 

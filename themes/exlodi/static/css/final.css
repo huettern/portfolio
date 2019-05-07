@@ -8,6 +8,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  /*scroll-behavior: smooth;*/
+}
+
 body {
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
@@ -35,6 +39,13 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   font-family: 'Open Sans', sans-serif;
+}
+
+/*----------------------------------------------------
+Override Color schemes
+  ----------------------------------------------------*/
+.bg-dark {
+  background-color: rgba(33, 54, 110, 1)!important;
 }
 
 footer {
@@ -144,6 +155,11 @@ section {
   padding-right: 30px;
 }
 
+#hero-section {
+  padding-top: 120px; 
+  background-repeat: repeat-x;
+}
+
 .hero {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -198,6 +214,10 @@ section {
 
 .hero-right {
   width: 500px;
+  background: white;
+  border-radius: 2px;
+  padding: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
 }
 
 .hero-right p {
@@ -718,6 +738,7 @@ section {
 @media all and (max-width:980px) {
   .hero-right {
     width: 100%;
+    box-shadow: none;
   }
   .process-item {
     max-width: 45%;
@@ -825,4 +846,51 @@ section {
 /* Fix indentation of all the toc */
 #TableOfContents ul:first-child {
     padding-left: 0;
+}
+
+
+/*----------------------------------------------------
+  Back to top button
+  ----------------------------------------------------*/
+#bttbutton {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+#bttbutton::after {
+  content: "\f106";
+  font-family: 'Font Awesome\ 5 Free';
+  font-weight: 900;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+#bttbutton:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+#bttbutton:active {
+  background-color: #555;
+}
+#bttbutton.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*----------------------------------------------------
+  Nav
+  ----------------------------------------------------*/
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
 }
