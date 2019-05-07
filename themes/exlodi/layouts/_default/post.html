@@ -6,8 +6,13 @@
     <body>
         {{ partial "nav.html" . }}
 
+
+        {{ with .Params.jumbo }}
+            <div class="jumbotron" style="background: url({{ . | absURL }}) no-repeat center center;">
+            </div>
+        {{ end }}
+
         <section>
-            {{ with .Params.jumbo }}<img src="{{ . | absURL }}" alt="post-image" class="img-responsive post-jumbo-img">{{ end }}
             <div class="content-post">
             <h1>{{ .Title }}</h1>
             <p style="text-align:center;margin-top: 0.5em;">

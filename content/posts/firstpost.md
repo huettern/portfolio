@@ -1,6 +1,7 @@
 ---
 title: "First post"
 layout: post
+draft: true
 date: "2019-04-30"
 tags: ["Testpost", "Linux", "FPGA"]
 categories: ["Test"]

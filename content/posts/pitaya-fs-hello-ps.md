@@ -4,6 +4,7 @@ author: "Noah Hütter"
 layout: post
 date: "2017-12-24"
 tags: ["Linux", "FPGA","Redpitaya"]
+category: ["zynq","zynq_ps"]
 image: "img/pitaya/pitaya-block.jpeg"
 jumbo: "img/pitaya/pitaya-head.jpeg"
 description: "In this post we are going to say Hello from the processing system (PS) in the Zynq SoC"

@@ -41,12 +41,6 @@ p {
   font-family: 'Open Sans', sans-serif;
 }
 
-/*----------------------------------------------------
-Override Color schemes
-  ----------------------------------------------------*/
-.bg-dark {
-  background-color: rgba(33, 54, 110, 1)!important;
-}
 
 footer {
   padding: 30px 30px 30px 30px;
@@ -829,7 +823,6 @@ section {
 
 .content-post h1 {
   margin: 0;
-  margin-top: 1em;
   text-align: center;
   font-size: 4em;
 }
@@ -900,3 +893,19 @@ section {
 .error-template {padding: 40px 15px;text-align: center;}
 .error-actions {margin-top:15px;margin-bottom:15px;}
 .error-actions .btn { margin-right:10px; }
+
+/*----------------------------------------------------
+  Jumbotron
+  ----------------------------------------------------*/
+.jumbotron {
+  background-size: 100%;
+  border-radius: 0;
+  min-height: 400px;
+}
+
+.posts-wrapper {
+  background-color: rgba(52, 58, 64, 0.02);
+  padding: 0.4em;
+  margin-left: 4em;
+  margin-right: 4em;
+}
