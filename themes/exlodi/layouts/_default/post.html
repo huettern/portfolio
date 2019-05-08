@@ -5,6 +5,7 @@
     </head>
     <body>
         <a id="bttbutton" class="bg-dark"></a>
+        <div class="progressCounter"></div>
         {{ partial "nav.html" . }}
 
 
@@ -22,6 +23,9 @@
             </p>
 
             <hr>
+            <h2>Description</h2>
+            <p>{{ .Params.description | markdownify }}</p>
+
             <h2>Table of Contents</h2>
             {{.TableOfContents}}
             {{ .Content }}

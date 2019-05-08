@@ -18,10 +18,15 @@ Usage:
       {{ $cat := .Get "category" }}
         <hr>
         <dl>
-        {{ range where .Site.Pages "Type" "posts" | first 5 }}
+        {{ range (where .Site.Pages "Type" "posts").Reverse | first 5 }}
           {{ if in .Params.category $cat }}
-              <dt><a href="{{ .URL }}">{{ .Title }}</a></dt>
-              <dd>{{ .Description | markdownify }}</dd>
+              <div style="width: 100%; overflow: hidden;">
+                  <div style="float: left; margin-right: 0.5em"> <span class="badge badge-secondary">{{ .Date.Format "Jan 2, 2006" }}</span> </div>
+                  <div style="margin-left: 620px;">
+              </div>
+                <dt><a href="{{ .URL }}">{{ .Title }}</a></dt>
+              </div>
+                <dd>{{ .Description | markdownify }}</dd>
               <hr>
           {{ end }}
         {{ end }}

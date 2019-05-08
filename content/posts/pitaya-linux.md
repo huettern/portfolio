@@ -16,6 +16,11 @@ _Disclaimer: This code is largely copied from [https://github.com/pavel-demin/re
 *DO NOT WORK ON A SHARED FOLDER INSIDE VIRTUALBOX*
 It will get messy, because the Linux kernel build uses a case sensitive file system, which Mac does not provide.
 
+Clone my `zynq-sandbox` [repository](https://github.com/noah95/zynq-sandbox) from github if you have not done so already.
+```bash
+git clone https://github.com/noah95/zynq-sandbox
+```
+
 Fix gmake:
 ```bash
 sudo ln -s /usr/bin/make /usr/bin/gmake
@@ -26,15 +31,23 @@ Install some tools:
 sudo apt install curl u-boot-tools libncurses-dev
 ```
 
+Change to the Linux directory.
+```bash
+cd sw/linux
+```
+
 ## Step-by-step build
 For educational build purposes, the Makefile was extended to build each component seperately.
 This guide will go through all components and briefly explain what they are needed for.
 
 ### Create FSBL
 Requires: 
-- Hardware definition exported from Vivado HLx.
+
+ - Hardware definition exported from Vivado HLx.
+
 Generates: 
-- `build/name.fsbl/executable.elf`
+
+ - `build/name.fsbl/executable.elf`
 
 This generates the source code and binary for the first level bootloader that is executed after power on.
 After project creation, the fsbl is compiled and the binary written.
@@ -46,11 +59,13 @@ make fsbl
 
 ### Devicetree source
 Requires: 
-- Hardware definition
-- Devicetree sources download from Xilinx repository
+
+ - Hardware definition
+ - Devicetree sources download from Xilinx repository
 
 Generates:
-- Device tree sources `dts`
+
+ - Device tree sources `dts`
 
 The devicetree files from Xilinx are downloaded and a device tree project created from the hardware definition files. 
 From these two sources, a set of `dts` (device tree sources) files are generated.
@@ -64,10 +79,12 @@ make dts
 
 ### Linux Kernel
 Requires: 
-- Nothing
+
+ - Nothing
 
 Generates:
-- `uImage`
+
+ - `uImage`
 
 Now it is time to pull a vanilla Linux kernel, uncompress the sources, apply some patches, copy some config and finally build the kernel. Issue the following command and go for a walk:
 
@@ -87,10 +104,12 @@ make -C build/linux-4.14 ARCH=arm CFLAGS="-O2 -march=armv7-a \
 
 ### U Boot
 Requires: 
-- Nothing
+
+ - Nothing
 
 Generates:
-- `u-boot.elf`
+
+ - `u-boot.elf`
 
 The bootloader is build from source pulled from Xilinxed repositoriers.
 Before build, some config files are copied and patches applied.
@@ -102,11 +121,13 @@ make uboot
 
 ### Devicetree blob
 Requires: 
-- `uImage`
+
+ - `uImage`
 - Devicetree source
 
 Generates:
-- `devicetree.dtb`
+
+ - `devicetree.dtb`
 
 Using the device tree sources generated previously, the devicetree compiler is used to generate the devicetree blob.
 
@@ -117,12 +138,14 @@ make dtb
 
 ### Boot image
 Requires: 
-- FSBL
-- Bit stream
-- U Boot
+
+  - FSBL
+  - Bit stream
+  - U Boot
 
 Generates:
-- `boot.bin`
+
+ - `boot.bin`
 
 Now the three binaries can be tied to a single binary image.
 
@@ -132,11 +155,13 @@ make bootbin
 ```
 ### uEnvt.txt
 Requires: 
-- Linux compiled
-- dtb compiled
+
+  - Linux compiled
+  - dtb compiled
 
 Generates:
-- uEnvt.txt
+
+ - uEnvt.txt
 
 For u-boot to know what linux version to load we have to generate a uEnv.txt file.
 This is done by running the following command:
@@ -149,14 +174,16 @@ make uenv
 ### Copy contents to SD-Card
 
 Create two partitions on a SD-Card:
-1. fat32 1.00GiB label:BOOT Flags:boot
-2. ext4 label:root
+
+  1. fat32 1.00GiB `label:BOOT` `flags:boot`
+  2. ext4 `label:root`
 
 Copy the following files on the boot partition:
-- boot.bin
-- devicetree.dtb
-- uImage
-- uEnv.txt
+
+  - boot.bin
+  - devicetree.dtb
+  - uImage
+  - uEnv.txt
 
 ### First Boot!
 Connect a serial console and power up the board.
