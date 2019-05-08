@@ -13,14 +13,24 @@ description: "After building the Linux Kernel [in a recent post](/posts/pitaya-l
 _Disclaimer: This code is largely copied from [https://github.com/pavel-demin/red-pitaya-notes](https://github.com/pavel-demin/red-pitaya-notes), licensed under MIT license._
 
 ## Prerequisites
-Clone my `zynq-sandbox` [repository]() from github.
+This tutorial is built on top of the [Linux on Zynq](/posts/pitaya-linux) tutorial. 
+It requires the Kernel built in the previous post. 
+So if you want to get it working, start over at [Linux on Zynq](/posts/pitaya-linux) and come back here after you are done.
+
+Clone my `zynq-sandbox` [repository](https://github.com/noah95/zynq-sandbox) from github.
 ```bash
-git clone
+git clone https://github.com/noah95/zynq-sandbox
 ```
 
 Install `qemu` the CPU emulator.
 ```bash
 sudo apt install qemu-user-static
+```
+
+Change to a suitable build folder.
+```bash
+mkdir -p sw/linux/build/alpine
+cd sw/linux/build/alpine
 ```
 
 ## Build
