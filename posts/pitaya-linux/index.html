@@ -50,6 +50,7 @@ if (!doNotTrack) {
     </head>
     <body>
         <a id="bttbutton" class="bg-dark"></a>
+        <div class="progressCounter"></div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
   <a class="navbar-brand" href="/">beeblebrox.ch</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,6 +100,9 @@ if (!doNotTrack) {
             </p>
 
             <hr>
+            <h2>Description</h2>
+            <p>In this post I will show you how to compile and install a vanilla Linux kernel and root file system on Zynq SoC.</p>
+
             <h2>Table of Contents</h2>
             <nav id="TableOfContents">
 <ul>
@@ -130,10 +134,14 @@ if (!doNotTrack) {
 <p><em>DO NOT WORK ON A SHARED FOLDER INSIDE VIRTUALBOX</em>
 It will get messy, because the Linux kernel build uses a case sensitive file system, which Mac does not provide.</p>
 
+<p>Clone my <code>zynq-sandbox</code> <a href="https://github.com/noah95/zynq-sandbox">repository</a> from github if you have not done so already.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/noah95/zynq-sandbox</code></pre></div>
 <p>Fix gmake:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ln -s /usr/bin/make /usr/bin/gmake</code></pre></div>
 <p>Install some tools:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install curl u-boot-tools libncurses-dev</code></pre></div>
+<p>Change to the Linux directory.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd sw/linux</code></pre></div>
 <h2 id="step-by-step-build">Step-by-step build</h2>
 
 <p>For educational build purposes, the Makefile was extended to build each component seperately.
@@ -141,10 +149,17 @@ This guide will go through all components and briefly explain what they are need
 
 <h3 id="create-fsbl">Create FSBL</h3>
 
-<p>Requires:
-- Hardware definition exported from Vivado HLx.
-Generates:
-- <code>build/name.fsbl/executable.elf</code></p>
+<p>Requires:</p>
+
+<ul>
+<li>Hardware definition exported from Vivado HLx.</li>
+</ul>
+
+<p>Generates:</p>
+
+<ul>
+<li><code>build/name.fsbl/executable.elf</code></li>
+</ul>
 
 <p>This generates the source code and binary for the first level bootloader that is executed after power on.
 After project creation, the fsbl is compiled and the binary written.</p>
@@ -152,12 +167,18 @@ After project creation, the fsbl is compiled and the binary written.</p>
 make fsbl</code></pre></div>
 <h3 id="devicetree-source">Devicetree source</h3>
 
-<p>Requires:
-- Hardware definition
-- Devicetree sources download from Xilinx repository</p>
+<p>Requires:</p>
 
-<p>Generates:
-- Device tree sources <code>dts</code></p>
+<ul>
+<li>Hardware definition</li>
+<li>Devicetree sources download from Xilinx repository</li>
+</ul>
+
+<p>Generates:</p>
+
+<ul>
+<li>Device tree sources <code>dts</code></li>
+</ul>
 
 <p>The devicetree files from Xilinx are downloaded and a device tree project created from the hardware definition files.
 From these two sources, a set of <code>dts</code> (device tree sources) files are generated.
@@ -168,11 +189,17 @@ rm -r build/*.tree
 make dts</code></pre></div>
 <h3 id="linux-kernel">Linux Kernel</h3>
 
-<p>Requires:
-- Nothing</p>
+<p>Requires:</p>
 
-<p>Generates:
-- <code>uImage</code></p>
+<ul>
+<li>Nothing</li>
+</ul>
+
+<p>Generates:</p>
+
+<ul>
+<li><code>uImage</code></li>
+</ul>
 
 <p>Now it is time to pull a vanilla Linux kernel, uncompress the sources, apply some patches, copy some config and finally build the kernel. Issue the following command and go for a walk:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -r build/linux*
@@ -185,11 +212,17 @@ make -C build/linux-4.14 ARCH<span style="color:#f92672">=</span>arm CFLAGS<span
 </span><span style="color:#ae81ff"></span> CROSS_COMPILE<span style="color:#f92672">=</span>arm-linux-gnueabihf- UIMAGE_LOADADDR<span style="color:#f92672">=</span>0x8000 uImage modules</code></pre></div>
 <h3 id="u-boot">U Boot</h3>
 
-<p>Requires:
-- Nothing</p>
+<p>Requires:</p>
 
-<p>Generates:
-- <code>u-boot.elf</code></p>
+<ul>
+<li>Nothing</li>
+</ul>
+
+<p>Generates:</p>
+
+<ul>
+<li><code>u-boot.elf</code></li>
+</ul>
 
 <p>The bootloader is build from source pulled from Xilinxed repositoriers.
 Before build, some config files are copied and patches applied.</p>
@@ -197,37 +230,55 @@ Before build, some config files are copied and patches applied.</p>
 make uboot</code></pre></div>
 <h3 id="devicetree-blob">Devicetree blob</h3>
 
-<p>Requires:
-- <code>uImage</code>
-- Devicetree source</p>
+<p>Requires:</p>
 
-<p>Generates:
-- <code>devicetree.dtb</code></p>
+<ul>
+<li><code>uImage</code></li>
+<li>Devicetree source</li>
+</ul>
+
+<p>Generates:</p>
+
+<ul>
+<li><code>devicetree.dtb</code></li>
+</ul>
 
 <p>Using the device tree sources generated previously, the devicetree compiler is used to generate the devicetree blob.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -r build/devicetree*
 make dtb</code></pre></div>
 <h3 id="boot-image">Boot image</h3>
 
-<p>Requires:
-- FSBL
-- Bit stream
-- U Boot</p>
+<p>Requires:</p>
 
-<p>Generates:
-- <code>boot.bin</code></p>
+<ul>
+<li>FSBL</li>
+<li>Bit stream</li>
+<li>U Boot</li>
+</ul>
+
+<p>Generates:</p>
+
+<ul>
+<li><code>boot.bin</code></li>
+</ul>
 
 <p>Now the three binaries can be tied to a single binary image.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -r build/boot.bin
 make bootbin</code></pre></div>
 <h3 id="uenvt-txt">uEnvt.txt</h3>
 
-<p>Requires:
-- Linux compiled
-- dtb compiled</p>
+<p>Requires:</p>
 
-<p>Generates:
-- uEnvt.txt</p>
+<ul>
+<li>Linux compiled</li>
+<li>dtb compiled</li>
+</ul>
+
+<p>Generates:</p>
+
+<ul>
+<li>uEnvt.txt</li>
+</ul>
 
 <p>For u-boot to know what linux version to load we have to generate a uEnv.txt file.
 This is done by running the following command:</p>
@@ -235,15 +286,21 @@ This is done by running the following command:</p>
 make uenv</code></pre></div>
 <h3 id="copy-contents-to-sd-card">Copy contents to SD-Card</h3>
 
-<p>Create two partitions on a SD-Card:
-1. fat32 1.00GiB label:BOOT Flags:boot
-2. ext4 label:root</p>
+<p>Create two partitions on a SD-Card:</p>
 
-<p>Copy the following files on the boot partition:
-- boot.bin
-- devicetree.dtb
-- uImage
-- uEnv.txt</p>
+<ol>
+<li>fat32 1.00GiB <code>label:BOOT</code> <code>flags:boot</code></li>
+<li>ext4 <code>label:root</code></li>
+</ol>
+
+<p>Copy the following files on the boot partition:</p>
+
+<ul>
+<li>boot.bin</li>
+<li>devicetree.dtb</li>
+<li>uImage</li>
+<li>uEnv.txt</li>
+</ul>
 
 <h3 id="first-boot">First Boot!</h3>
 

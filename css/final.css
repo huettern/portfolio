@@ -903,9 +903,29 @@ section {
   min-height: 400px;
 }
 
+@media all and (max-width: 842px) {
+  .jumbotron {
+    min-height: 200px;
+  }
+}
 .posts-wrapper {
   background-color: rgba(52, 58, 64, 0.02);
   padding: 0.4em;
-  margin-left: 4em;
-  margin-right: 4em;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/*----------------------------------------------------
+  scrollprogress badge
+  ----------------------------------------------------*/
+.progressCounter {
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+}
+.progressCounter.show {
+  opacity: 1;
+  visibility: visible;
 }
