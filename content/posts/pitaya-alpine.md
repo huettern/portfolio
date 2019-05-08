@@ -17,7 +17,7 @@ This tutorial is built on top of the [Linux on Zynq](/posts/pitaya-linux) tutori
 It requires the Kernel built in the previous post. 
 So if you want to get it working, start over at [Linux on Zynq](/posts/pitaya-linux) and come back here after you are done.
 
-Clone my `zynq-sandbox` [repository](https://github.com/noah95/zynq-sandbox) from github.
+Clone my `zynq-sandbox` [repository](https://github.com/noah95/zynq-sandbox) from github if you have not done so already.
 ```bash
 git clone https://github.com/noah95/zynq-sandbox
 ```
