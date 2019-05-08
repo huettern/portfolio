@@ -8,7 +8,7 @@
         {{ partial "nav.html" . }}
 
         {{ with .Params.jumbo }}
-            <div class="jumbotron" style="background-image: url({{ . | absURL }});">
+            <div class="jumbotron" style="background: url({{ . | absURL }}) no-repeat center center;">
             </div>
         {{ end }}
 
