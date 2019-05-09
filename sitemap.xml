@@ -3,68 +3,68 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://beeblebrox.ch/projects/ba-thesis-diip/</loc>
+    <loc>/projects/ba-thesis-diip/</loc>
     <lastmod>2019-03-11T03:29:08-07:00</lastmod>
   </url>
   
   <url>
-    <loc>https://beeblebrox.ch/posts/pitaya-alpine/</loc>
+    <loc>/posts/pitaya-alpine/</loc>
     <lastmod>2019-05-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://beeblebrox.ch/posts/</loc>
+    <loc>/posts/</loc>
     <lastmod>2019-05-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://beeblebrox.ch/tags/fpga/</loc>
-    <lastmod>2019-05-08T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://beeblebrox.ch/tags/linux/</loc>
+    <loc>/tags/fpga/</loc>
     <lastmod>2019-05-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://beeblebrox.ch/</loc>
+    <loc>/tags/linux/</loc>
     <lastmod>2019-05-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://beeblebrox.ch/tags/redpitaya/</loc>
+    <loc>/</loc>
     <lastmod>2019-05-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://beeblebrox.ch/tags/</loc>
+    <loc>/tags/redpitaya/</loc>
     <lastmod>2019-05-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://beeblebrox.ch/posts/pitaya-linux/</loc>
+    <loc>/tags/</loc>
+    <lastmod>2019-05-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/posts/pitaya-linux/</loc>
     <lastmod>2019-04-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://beeblebrox.ch/projects/</loc>
+    <loc>/projects/</loc>
     <lastmod>2019-03-11T03:29:08-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://beeblebrox.ch/posts/pitaya-fs-hello-ps/</loc>
+    <loc>/posts/pitaya-fs-hello-ps/</loc>
     <lastmod>2017-12-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://beeblebrox.ch/categories/</loc>
+    <loc>/categories/</loc>
     <priority>0</priority>
   </url>
   
