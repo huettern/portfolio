@@ -1,4 +1,4 @@
-# My-Portfolio website
+# My-Portfolio website [![Build Status](https://travis-ci.org/noah95/portfolio.svg?branch=master)](https://travis-ci.org/noah95/portfolio)
 
 ## Inspiration
 https://themes.gohugo.io/theme/hugo-uilite/#contact
