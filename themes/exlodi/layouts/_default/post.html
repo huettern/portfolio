@@ -30,6 +30,19 @@
             {{.TableOfContents}}
             {{ .Content }}
             </div>
+
+            <div class="content-post">
+                <hr>
+                <script src="https://utteranc.es/client.js"
+                        repo="noah95/portfolio"
+                        issue-term="title"
+                        label="comments"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+
         </section>
 
         {{ if .Site.Params.footer.enable }}

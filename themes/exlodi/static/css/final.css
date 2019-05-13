@@ -929,3 +929,11 @@ section {
   opacity: 1;
   visibility: visible;
 }
+
+/*----------------------------------------------------
+  Comments section
+  ----------------------------------------------------*/
+.utterances {
+  /* margin-left: auto;
+  margin-right: auto; */
+}
