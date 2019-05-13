@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Noah Hütter Portfolio</title>
-    <link>xn--htter-kva.ch/projects/</link>
+    <link>/projects/</link>
     <description>Recent content in Projects on Noah Hütter Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Mar 2019 03:29:08 -0700</lastBuildDate>
     
-	<atom:link href="xn--htter-kva.ch/projects/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/projects/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>BA Thesis | diip</title>
-      <link>xn--htter-kva.ch/projects/ba-thesis-diip/</link>
+      <link>/projects/ba-thesis-diip/</link>
       <pubDate>Mon, 11 Mar 2019 03:29:08 -0700</pubDate>
       
-      <guid>xn--htter-kva.ch/projects/ba-thesis-diip/</guid>
+      <guid>/projects/ba-thesis-diip/</guid>
       <description>Abstract In the world of self-driving cars and virtual reality games it is becoming increasingly important to represent digitally what we see. Therefore, using high resolution cameras, images of the environment have been recorded. These large images are processed to be presented three dimensionally. This image processing task needs to be accelerated to get a fast work flow. A dedicated hardware approach using Field Programmable Gate Arrays (FPGA) was implemented that is scalable onto multiple FPGAs.</description>
     </item>
     
