@@ -3,7 +3,7 @@ title: "Zynq with RedPitaya from scratch: Hello PS World"
 author: "Noah Hütter"
 layout: post
 date: "2017-12-24"
-tags: ["Linux", "FPGA","Redpitaya"]
+tags: ["ARM", "FPGA","Redpitaya"]
 category: ["zynq","zynq_ps"]
 image: "img/pitaya/pitaya-hello.png"
 jumbo: "img/pitaya/pitaya-head.jpeg"

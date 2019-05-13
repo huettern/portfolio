@@ -908,11 +908,21 @@ section {
     min-height: 200px;
   }
 }
+
+/*----------------------------------------------------
+  Post shortcode
+  ----------------------------------------------------*/
 .posts-wrapper {
   background-color: rgba(52, 58, 64, 0.02);
   padding: 0em;
   margin-left: 5%;
   margin-right: 5%;
+}
+.posts-wrapper hr {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .posts-wrapper hr:first-child {
@@ -921,22 +931,22 @@ section {
 
 .posts-container {
   /* display: table; */
-  display: inline-block;
-  vertical-align: top;  
+  margin-left: 0;
+  margin-right: 0;
+  transition: 0.2s;
 }
-.posts-container .left {
-  /* position: absolute; */
-  height: 6em;
-  width: 12em;
-  display: inline-block;
-  vertical-align: top;
+
+.posts-container:hover {
+  background-color: rgba(44, 54, 65, 0.05);
+}
+.rp-left {    
+  min-height: 4em;
+  background-clip: content-box;
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
 }
-.posts-container .right {
-  display: inline-block;
-  vertical-align: top;
+.rp-right {
 }
 
 /*----------------------------------------------------

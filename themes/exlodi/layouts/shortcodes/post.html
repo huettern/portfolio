@@ -1,57 +1,57 @@
 
 {{/*
-
-Print a list or a single post
-
-Usage:
+  
+  Print a list or a single post
+  
+  Usage:
   # Get a list of posts in a category
-    {{< post category="zynq" >}}
-
+  {{< post category="zynq" >}}
+  
   # Get a single post by its file name
-    {{< post name="pitaya-linux.md" >}}
-
-*/}}
-
-<div class="posts-wrapper">
-  {{ if .IsNamedParams }}
+  {{< post name="pitaya-linux.md" >}}
+  
+  */}}
+  
+  <div class="posts-wrapper">
+    {{ if .IsNamedParams }}
     {{ if .Get "category" }}
-      {{ $cat := .Get "category" }}
-        <hr>
-        <dl>
-        {{ range (where .Site.Pages "Type" "posts").Reverse | first 5 }}
-          {{ if in .Params.category $cat }}
-
-
-<div class="posts-container">
-    {{ with .Params.image }}
-    <div class="left" style="background-image: url({{ . | absURL }});">
-        {{ end }}
-    </div>
-    <div class="right">
-        <div style="width: 100%; overflow: hidden;">
+    {{ $cat := .Get "category" }}
+    <hr>
+    <dl>
+      {{ range (where .Site.Pages "Type" "posts").Reverse | first 5 }}
+      {{ if in .Params.category $cat }}
+      
+      <div class="row posts-container">
+        {{ with .Params.image }}
+        <div class="col-md-2 rp-left" style="background-image: url({{ . | absURL }});">
+          {{ end }}
+        </div>
+        <div class="col-md-10 rp-right">
+          <div style="width: 100%; overflow: hidden;">
             <div style="float: left; margin-right: 0.5em"> <span class="badge badge-secondary">{{ .Date.Format "Jan 2, 2006" }}</span> </div>
             <div style="margin-left: 620px;"></div>
             <dt><a href="{{ .URL }}">{{ .Title }}</a></dt>
-        </div>
-        <dd>{{ .Description | markdownify }}</dd>
-    </div>
-</div>
-
-              
-
-
-              <hr>
-          {{ end }}
-        {{ end }}
-        </dl>
-    {{ else }}
-        {{ $name := .Get "name" }}
-        {{ with .Site.GetPage $name }}
-          <hr>
-          <dt><a href="{{ .URL }}">{{ .Title }}</a></dt>
+          </div>
           <dd>{{ .Description | markdownify }}</dd>
-          <hr>
-        {{ end }}
+          <div style="width: 100%; overflow: hidden;">
+            {{ range .Params.tags }}
+            <div style="float: left; margin-right: 0.5em"> <span class="badge badge-info"><i class="fas fa-tag"></i> {{ . }}</span> </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      <hr>
+      {{ end }}
+      {{ end }}
+    </dl>
+    {{ else }}
+    {{ $name := .Get "name" }}
+    {{ with .Site.GetPage $name }}
+    <hr>
+    <dt><a href="{{ .URL }}">{{ .Title }}</a></dt>
+    <dd>{{ .Description | markdownify }}</dd>
+    <hr>
     {{ end }}
-  {{ end }}
-</div>
+    {{ end }}
+    {{ end }}
+  </div>
