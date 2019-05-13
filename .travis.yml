@@ -6,7 +6,7 @@ addons:
 
 env:
   matrix:
-    secure: g7qRJJiBadPa1qC+PgxPqUSJgK9AG0wJPnrxE5gWoouv/PXGD61f8U42JKeCm9OS25VMRoCr2ERH99jfIQXYcKoYZ/DPI0IURCG9J+2AU38AXwhQiSD/uDw8rWOZjjY/c8CxKcLMc5MWGsSqi0Npe765hx4fLzdowgdJYM05LXij725Egbmxu24T9qW3G/CvnSNuuQ9p+LRf5br9qhZi9C5yLvEo7ZnWXlBdUGeMROn7gepwwwNRNFyToumioi1+S05JM9DMKjQNxZKn4HTy8454aBs9hu04k2EVT8IeiYasx+3MPO7pQ3daV4cqgkej3OlCnf1iQQTmRJpC/b6vMfXUDfaNTx4/EHqHoUyVodLH9wSG9lC0T4ggN0Js2BeWeIYXRWgdvOV8ejU1ItcYuVLgHD5tMF2pHQpOcMDzWRm+Y2ysGAHqDWCi+dZWBnNByEYMAVmwu1y+u6R05YBi6KOVjdcysxBVjCK8171e6zjwyBX6Bu2PFzpIlnI2oXI6ZeHF+3ss/Cw4QczkRQ0W9+3/nl1wdhv5VCD2MEgmVUN2O0tahBlYJZiAi7hjCM+p93ZrD4aaVFJ1W4ZklkAfo9vJHKOlb1f4FOxUJufWkvoC7VGh3hZOsV85Dc4sTlNLCFir1MfiZzzS1Uan7poQU4H3p87UB2QpC7OZR8v7wBo=
+    secure: "mxANGWtSI05kLhg7UAZP5Cu3n2hRbJ4nHIVPdorDzuf+bYDFzVyp9oGFQCwErAZHWOalgQF2cybnJyqVjbpqU+Z0T9fHJdJxKgA8xwRxPbQZqumv+OfKaLInlQr0nUvWvxTJFjZcoaRX1MbK83Big41Swg/HR5GPDC9uSjKXl08mTRIKHyOkZoSMmDoe16+wC6Bmi5NqgZzTbo5h1K83nWqD9TowhYFJ9YcrH/9Jbrbf1tKMRLndDAz2OPwd1tKP0dLyCKmRRznZsrV8SX/GloVsSxa4bOUPm+toM8a4KpXxdi/+W1td6RuRI5RUOyQkcRW93vdtVqsY5wNO40d9svjhTEt99hw3c8lMzpYmdyCGdo+vdnTleK5gD1Vmk8eglcbt3Qnv37cIxmICm7+ecQWMIqKljb65FfOGbfBFz/4+7AgdTwRoFdfzMXXNSTHMH+vlTQaYxLO447YSXl/l7wJKJmlMfjZFODd1d/1u0tYUOjvn/BFJx54wn9iELqnvC15aCUAhK2JQTELpqw06a2kXITz9sOystiCl+07cRbg7NY/ZZqtAkv/3CNtgqXOgFPHfSdhJ0EmK0kWwQxIPFYKgWNtvcsdbjgoUN9FejGVuEhxhCkGz2F15f54CiNTFYaS4vfpovmFA2ycyH8QqWu5CK53krj5AJ/0/GtFWg8o="
 
 script:
   - hugo
@@ -15,7 +15,7 @@ deploy:
   provider: pages
   target-branch: gh-pages
   skip-cleanup: true
-  github-token: $GHTOKEN
+  github-token: $GH_TOKEN
   keep-history: true
   verbose: true
   local-dir: public
