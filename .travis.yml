@@ -19,6 +19,6 @@ deploy:
   keep-history: true
   verbose: true
   local-dir: public
-  fqdn: beeblebrox.ch
+  fqdn: xn--htter-kva.ch
   on:
     branch: production
