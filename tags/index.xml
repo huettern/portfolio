@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Noah Hütter Portfolio</title>
-    <link>/tags/</link>
+    <link>xn--htter-kva.ch/tags/</link>
     <description>Recent content in Tags on Noah Hütter Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 08 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="xn--htter-kva.ch/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>FPGA</title>
-      <link>/tags/fpga/</link>
+      <link>xn--htter-kva.ch/tags/fpga/</link>
       <pubDate>Wed, 08 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/fpga/</guid>
+      <guid>xn--htter-kva.ch/tags/fpga/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>/tags/linux/</link>
+      <link>xn--htter-kva.ch/tags/linux/</link>
       <pubDate>Wed, 08 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/linux/</guid>
+      <guid>xn--htter-kva.ch/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Redpitaya</title>
-      <link>/tags/redpitaya/</link>
+      <link>xn--htter-kva.ch/tags/redpitaya/</link>
       <pubDate>Wed, 08 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/redpitaya/</guid>
+      <guid>xn--htter-kva.ch/tags/redpitaya/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ARM</title>
-      <link>/tags/arm/</link>
+      <link>xn--htter-kva.ch/tags/arm/</link>
       <pubDate>Sun, 24 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/arm/</guid>
+      <guid>xn--htter-kva.ch/tags/arm/</guid>
       <description></description>
     </item>
     
