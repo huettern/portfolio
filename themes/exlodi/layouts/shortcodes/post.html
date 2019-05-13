@@ -20,13 +20,26 @@ Usage:
         <dl>
         {{ range (where .Site.Pages "Type" "posts").Reverse | first 5 }}
           {{ if in .Params.category $cat }}
-              <div style="width: 100%; overflow: hidden;">
-                  <div style="float: left; margin-right: 0.5em"> <span class="badge badge-secondary">{{ .Date.Format "Jan 2, 2006" }}</span> </div>
-                  <div style="margin-left: 620px;">
-              </div>
-                <dt><a href="{{ .URL }}">{{ .Title }}</a></dt>
-              </div>
-                <dd>{{ .Description | markdownify }}</dd>
+
+
+<div class="posts-container">
+    {{ with .Params.image }}
+    <div class="left" style="background-image: url({{ . | absURL }});">
+        {{ end }}
+    </div>
+    <div class="right">
+        <div style="width: 100%; overflow: hidden;">
+            <div style="float: left; margin-right: 0.5em"> <span class="badge badge-secondary">{{ .Date.Format "Jan 2, 2006" }}</span> </div>
+            <div style="margin-left: 620px;"></div>
+            <dt><a href="{{ .URL }}">{{ .Title }}</a></dt>
+        </div>
+        <dd>{{ .Description | markdownify }}</dd>
+    </div>
+</div>
+
+              
+
+
               <hr>
           {{ end }}
         {{ end }}

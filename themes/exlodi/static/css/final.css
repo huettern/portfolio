@@ -910,9 +910,33 @@ section {
 }
 .posts-wrapper {
   background-color: rgba(52, 58, 64, 0.02);
-  padding: 0.4em;
+  padding: 0em;
   margin-left: 5%;
   margin-right: 5%;
+}
+
+.posts-wrapper hr:first-child {
+  margin-top: 0;
+}
+
+.posts-container {
+  /* display: table; */
+  display: inline-block;
+  vertical-align: top;  
+}
+.posts-container .left {
+  /* position: absolute; */
+  height: 6em;
+  width: 12em;
+  display: inline-block;
+  vertical-align: top;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+}
+.posts-container .right {
+  display: inline-block;
+  vertical-align: top;
 }
 
 /*----------------------------------------------------
