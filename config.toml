@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "xn--htter-kva.ch"
 languageCode = "en-us"
 title = "Noah Hütter Portfolio"
 theme ="exlodi"
@@ -29,6 +29,7 @@ paginate = 2
 [params.nav]
  	logoenable = false
     enable = true
+    hometext = "hütter.ch"
 
 [params.hero]
     enable = true
@@ -62,6 +63,10 @@ paginate = 2
     
     # Medium username
     github = "https://github.com/noah95"
+
+    # Buttons
+    button1text = "Visit Blog posts"
+    button1url = "/posts"
 
 [params.resume]
     enable = true

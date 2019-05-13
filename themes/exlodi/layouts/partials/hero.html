@@ -32,6 +32,12 @@
                 {{ end }}
             </div>
 
+            <div class="landing-buttons">
+                {{ if isset .Site.Params.Hero "button1text" }}
+                <a class="btn btn-primary" href="{{ .Site.Params.Hero.button1url }}" role="button">{{ .Site.Params.Hero.button1text }}</a>
+                {{ end }}
+            </div>
+
             {{ if isset .Site.Params.Hero "resume" }}
             <a href="{{ .Site.BaseURL }}{{ .Site.Params.Hero.Resume }}" target="blank" class="download-resume" onclick="ga('send', {hitType: 'event',eventCategory: 'CTA',eventAction: 'download'});">
                 <img style="position: relative;top: 1.8px;padding-right: 6px;" src="svg/dl-resume.svg">
