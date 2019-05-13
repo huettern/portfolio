@@ -1,4 +1,4 @@
-baseURL = "xn--htter-kva.ch"
+baseURL = "/"
 languageCode = "en-us"
 title = "Noah Hütter Portfolio"
 theme ="exlodi"
