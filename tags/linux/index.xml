@@ -36,15 +36,5 @@ sudo ln -s /usr/bin/make /usr/bin/gmake Install some tools:
 sudo apt install curl u-boot-tools libncurses-dev Change to the Linux directory.</description>
     </item>
     
-    <item>
-      <title>Zynq with RedPitaya from scratch: Hello PS World</title>
-      <link>/posts/pitaya-fs-hello-ps/</link>
-      <pubDate>Sun, 24 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/pitaya-fs-hello-ps/</guid>
-      <description>In this post we are going to say Hello from the processing system (PS) in the Zynq SoC. As a platform I am using the RedPitaya board. With only 199$ it is the cheapest Xilinx Zynq board on the market. Unfortunately the hardware is not open source, but with the open source software, I could figure out the necessary settings to get this board running.
-Run Vivado sourcevivado vivado &amp;amp; Create a new Project Create a new project from File -&amp;gt; New Project, Next.</description>
-    </item>
-    
   </channel>
 </rss>

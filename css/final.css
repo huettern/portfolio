@@ -908,11 +908,45 @@ section {
     min-height: 200px;
   }
 }
+
+/*----------------------------------------------------
+  Post shortcode
+  ----------------------------------------------------*/
 .posts-wrapper {
   background-color: rgba(52, 58, 64, 0.02);
-  padding: 0.4em;
+  padding: 0em;
   margin-left: 5%;
   margin-right: 5%;
+}
+.posts-wrapper hr {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.posts-wrapper hr:first-child {
+  margin-top: 0;
+}
+
+.posts-container {
+  /* display: table; */
+  margin-left: 0;
+  margin-right: 0;
+  transition: 0.2s;
+}
+
+.posts-container:hover {
+  background-color: rgba(44, 54, 65, 0.05);
+}
+.rp-left {    
+  min-height: 4em;
+  background-clip: content-box;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+}
+.rp-right {
 }
 
 /*----------------------------------------------------
