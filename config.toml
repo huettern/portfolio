@@ -20,7 +20,7 @@ paginate = 2
     description_photo = "portrait_800.png"
 
     # favicon image (512x512px), place this in the static/img folder
-    favicon = "tux_pitaya_round-min.png"
+    favicon = "tux_pitaya_round-min-crop.png"
 
     # logo image (204x204px), place this in the static/img folder
     # this appears on the top left of the navigation
