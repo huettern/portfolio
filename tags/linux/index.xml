@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Noah Hütter Portfolio</title>
-    <link>/tags/linux/</link>
+    <link>https://xn--htter-kva.ch/tags/linux/</link>
     <description>Recent content in Linux on Noah Hütter Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 08 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xn--htter-kva.ch/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Alpine Linux on Zynq</title>
-      <link>/posts/pitaya-alpine/</link>
+      <link>https://xn--htter-kva.ch/posts/pitaya-alpine/</link>
       <pubDate>Wed, 08 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/posts/pitaya-alpine/</guid>
+      <guid>https://xn--htter-kva.ch/posts/pitaya-alpine/</guid>
       <description>Disclaimer: This code is largely copied from https://github.com/pavel-demin/red-pitaya-notes, licensed under MIT license.
 Prerequisites This tutorial is built on top of the Linux on Zynq tutorial. It requires the Kernel built in the previous post. So if you want to get it working, start over at Linux on Zynq and come back here after you are done.
 Clone my zynq-sandbox repository from github if you have not done so already.</description>
@@ -24,10 +24,10 @@ Clone my zynq-sandbox repository from github if you have not done so already.</d
     
     <item>
       <title>Linux on Zynq</title>
-      <link>/posts/pitaya-linux/</link>
+      <link>https://xn--htter-kva.ch/posts/pitaya-linux/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/posts/pitaya-linux/</guid>
+      <guid>https://xn--htter-kva.ch/posts/pitaya-linux/</guid>
       <description>Disclaimer: This code is largely copied from https://github.com/pavel-demin/red-pitaya-notes, licensed under MIT license.
 Prerequirements DO NOT WORK ON A SHARED FOLDER INSIDE VIRTUALBOX It will get messy, because the Linux kernel build uses a case sensitive file system, which Mac does not provide.
 Clone my zynq-sandbox repository from github if you have not done so already.

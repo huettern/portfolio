@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Redpitaya on Noah Hütter Portfolio</title>
-    <link>/tags/redpitaya/</link>
+    <link>https://xn--htter-kva.ch/tags/redpitaya/</link>
     <description>Recent content in Redpitaya on Noah Hütter Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 08 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/redpitaya/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xn--htter-kva.ch/tags/redpitaya/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Alpine Linux on Zynq</title>
-      <link>/posts/pitaya-alpine/</link>
+      <link>https://xn--htter-kva.ch/posts/pitaya-alpine/</link>
       <pubDate>Wed, 08 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/posts/pitaya-alpine/</guid>
+      <guid>https://xn--htter-kva.ch/posts/pitaya-alpine/</guid>
       <description>Disclaimer: This code is largely copied from https://github.com/pavel-demin/red-pitaya-notes, licensed under MIT license.
 Prerequisites This tutorial is built on top of the Linux on Zynq tutorial. It requires the Kernel built in the previous post. So if you want to get it working, start over at Linux on Zynq and come back here after you are done.
 Clone my zynq-sandbox repository from github if you have not done so already.</description>
@@ -24,10 +24,10 @@ Clone my zynq-sandbox repository from github if you have not done so already.</d
     
     <item>
       <title>Linux on Zynq</title>
-      <link>/posts/pitaya-linux/</link>
+      <link>https://xn--htter-kva.ch/posts/pitaya-linux/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/posts/pitaya-linux/</guid>
+      <guid>https://xn--htter-kva.ch/posts/pitaya-linux/</guid>
       <description>Disclaimer: This code is largely copied from https://github.com/pavel-demin/red-pitaya-notes, licensed under MIT license.
 Prerequirements DO NOT WORK ON A SHARED FOLDER INSIDE VIRTUALBOX It will get messy, because the Linux kernel build uses a case sensitive file system, which Mac does not provide.
 Clone my zynq-sandbox repository from github if you have not done so already.
@@ -38,10 +38,10 @@ sudo apt install curl u-boot-tools libncurses-dev Change to the Linux directory.
     
     <item>
       <title>Zynq with RedPitaya from scratch: Hello PS World</title>
-      <link>/posts/pitaya-fs-hello-ps/</link>
+      <link>https://xn--htter-kva.ch/posts/pitaya-fs-hello-ps/</link>
       <pubDate>Sun, 24 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>/posts/pitaya-fs-hello-ps/</guid>
+      <guid>https://xn--htter-kva.ch/posts/pitaya-fs-hello-ps/</guid>
       <description>In this post we are going to say Hello from the processing system (PS) in the Zynq SoC. As a platform I am using the RedPitaya board. With only 199$ it is the cheapest Xilinx Zynq board on the market. Unfortunately the hardware is not open source, but with the open source software, I could figure out the necessary settings to get this board running.
 Run Vivado sourcevivado vivado &amp;amp; Create a new Project Create a new project from File -&amp;gt; New Project, Next.</description>
     </item>

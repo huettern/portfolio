@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ARM on Noah Hütter Portfolio</title>
-    <link>/tags/arm/</link>
+    <link>https://xn--htter-kva.ch/tags/arm/</link>
     <description>Recent content in ARM on Noah Hütter Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Dec 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/arm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xn--htter-kva.ch/tags/arm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Zynq with RedPitaya from scratch: Hello PS World</title>
-      <link>/posts/pitaya-fs-hello-ps/</link>
+      <link>https://xn--htter-kva.ch/posts/pitaya-fs-hello-ps/</link>
       <pubDate>Sun, 24 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>/posts/pitaya-fs-hello-ps/</guid>
+      <guid>https://xn--htter-kva.ch/posts/pitaya-fs-hello-ps/</guid>
       <description>In this post we are going to say Hello from the processing system (PS) in the Zynq SoC. As a platform I am using the RedPitaya board. With only 199$ it is the cheapest Xilinx Zynq board on the market. Unfortunately the hardware is not open source, but with the open source software, I could figure out the necessary settings to get this board running.
 Run Vivado sourcevivado vivado &amp;amp; Create a new Project Create a new project from File -&amp;gt; New Project, Next.</description>
     </item>
