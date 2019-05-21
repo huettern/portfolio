@@ -11,9 +11,14 @@ paginate = 2
     # head theme color
     theme_color = "#00ff00"
 
+    # Name
+    myname = "Noah Hütter"
+
     # head description
     # This is what appears on the preview when posting this site on Facebook for example
-    description = "My Portfolio"
+    description = "Noah Hütter's Academic Achievements and a Selection of Electronics and Embedded themed Blog Posts focusing on FPGA, Linux and other fast stuff."
+
+    keywords = "Noah, Hütter, Huetter, Noah Hütter, Noah Huetter, Electronics, Electrical Engineer, ETH Zurich, ETH, FHNW, FPGA, Linux, Zynq, Embedded"
 
     # head photo
     # This is what appears on the preview when posting this site on Facebook for example

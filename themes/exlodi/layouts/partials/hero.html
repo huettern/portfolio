@@ -1,8 +1,8 @@
 <section id="hero-section" style="background-image: url('img/{{ .Site.Params.Hero.background }}')" id="scroll-element" data-scroll-index="0">
     <div class="hero">
         <div class="hero-left">
-            <img src="{{ .Site.BaseURL }}img/{{ .Site.Params.Hero.Avatar }}" style="max-width: 50%; border-radius: 50%; ">
-            <h2 class="subtitle">{{ .Site.Params.Hero.subtitle }}</h2>
+            <img src="{{ .Site.BaseURL }}img/{{ .Site.Params.Hero.Avatar }}" style="max-width: 50%; border-radius: 50%; " alt="{{ .Site.Params.myname }}">
+            <h1 class="subtitle">{{ .Site.Params.Hero.subtitle }}</h2>
             
             <div class="icons">
                 {{ if isset .Site.Params.Hero "email" }}
