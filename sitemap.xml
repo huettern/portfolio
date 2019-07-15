@@ -8,12 +8,47 @@
   </url>
   
   <url>
-    <loc>https://xn--htter-kva.ch/posts/pitaya-alpine/</loc>
-    <lastmod>2019-05-08T00:00:00+00:00</lastmod>
+    <loc>https://xn--htter-kva.ch/posts/</loc>
+    <lastmod>2019-07-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://xn--htter-kva.ch/posts/</loc>
+    <loc>https://xn--htter-kva.ch/posts/encrypted-remote-backup-using-duplicity/</loc>
+    <lastmod>2019-07-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xn--htter-kva.ch/tags/linux/</loc>
+    <lastmod>2019-07-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xn--htter-kva.ch/tags/nas/</loc>
+    <lastmod>2019-07-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xn--htter-kva.ch/</loc>
+    <lastmod>2019-07-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xn--htter-kva.ch/tags/</loc>
+    <lastmod>2019-07-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xn--htter-kva.ch/tags/duplicity/</loc>
+    <lastmod>2019-07-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xn--htter-kva.ch/posts/pitaya-alpine/</loc>
     <lastmod>2019-05-08T00:00:00+00:00</lastmod>
   </url>
   
@@ -24,25 +59,7 @@
   </url>
   
   <url>
-    <loc>https://xn--htter-kva.ch/tags/linux/</loc>
-    <lastmod>2019-05-08T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xn--htter-kva.ch/</loc>
-    <lastmod>2019-05-08T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://xn--htter-kva.ch/tags/redpitaya/</loc>
-    <lastmod>2019-05-08T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xn--htter-kva.ch/tags/</loc>
     <lastmod>2019-05-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

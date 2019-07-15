@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>duplicity on Noah Hütter Portfolio</title>
+    <link>https://xn--htter-kva.ch/tags/duplicity/</link>
+    <description>Recent content in duplicity on Noah Hütter Portfolio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xn--htter-kva.ch/tags/duplicity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Encrypted Remote Backup using duplicity</title>
+      <link>https://xn--htter-kva.ch/posts/encrypted-remote-backup-using-duplicity/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xn--htter-kva.ch/posts/encrypted-remote-backup-using-duplicity/</guid>
+      <description>Introduction My Data is currently stored on a 5 bay Synology NAS running a SHR RAID. All data is periodically backed up to a external hard drive using HyperBackup. This way my data is safe from a RAID failure. BUT what if the data gets mechanically destroyed or a virus encrypts all data on the NAS? An off-site backup solution must be found.
+Requirements  Off-site backup at low to no cost therefore cloud services are expelled Data transfer over SSH because security Data encryption!</description>
+    </item>
+    
+  </channel>
+</rss>

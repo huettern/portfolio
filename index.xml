@@ -6,7 +6,7 @@
     <description>Recent content on Noah Hütter Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xn--htter-kva.ch/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,16 @@
       
       <guid>https://xn--htter-kva.ch/projects/ba-thesis-diip/</guid>
       <description>Abstract In the world of self-driving cars and virtual reality games it is becoming increasingly important to represent digitally what we see. Therefore, using high resolution cameras, images of the environment have been recorded. These large images are processed to be presented three dimensionally. This image processing task needs to be accelerated to get a fast work flow. A dedicated hardware approach using Field Programmable Gate Arrays (FPGA) was implemented that is scalable onto multiple FPGAs.</description>
+    </item>
+    
+    <item>
+      <title>Encrypted Remote Backup using duplicity</title>
+      <link>https://xn--htter-kva.ch/posts/encrypted-remote-backup-using-duplicity/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xn--htter-kva.ch/posts/encrypted-remote-backup-using-duplicity/</guid>
+      <description>Introduction My Data is currently stored on a 5 bay Synology NAS running a SHR RAID. All data is periodically backed up to a external hard drive using HyperBackup. This way my data is safe from a RAID failure. BUT what if the data gets mechanically destroyed or a virus encrypts all data on the NAS? An off-site backup solution must be found.
+Requirements  Off-site backup at low to no cost therefore cloud services are expelled Data transfer over SSH because security Data encryption!</description>
     </item>
     
     <item>
