@@ -8,7 +8,6 @@ category: ["zynq","zynq_pl"]
 image: "img/pitaya/pitaya-hello.png"
 jumbo: "img/pitaya/pitaya-head.jpeg"
 description: ""
-<<<<<<< HEAD
 draft: true
 ---
 
