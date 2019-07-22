@@ -5,7 +5,7 @@ author: "Noah Hütter"
 layout: post
 date: "2019-07-15"
 tags: ["Linux", "duplicity", "NAS"]
-category: ["linux", "other"]
+category: ["hacks", "linux", "other"]
 image: "img/jumbos/dupl-header.png"
 jumbo: "img/jumbos/dupl-header.png"
 draft: false

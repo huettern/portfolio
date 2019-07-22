@@ -28,3 +28,8 @@ Running Linux on the SoC opens a range of opportunities.
 These posts show how to run Linux on the Zynq.
 
 {{< post category="zynq_linux" >}}
+
+## Stuff with Unix
+I like making my life easy. Here I'd like to share some of those nifty tricks that safe you a lot of pain.
+
+{{< post category="hacks" >}}
