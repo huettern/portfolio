@@ -25,11 +25,11 @@ testimonial_photo: "diip/diip-cover.png"
 testimonial_author: "John Robert Palomo"
 testimonial_subtitle: "Co-founder, Cope"
 date: 2019-08-28T03:29:08-07:00
-draft: true
+draft: false
 ---
 
 # Abstract
-Based on a simulation and multiple research papers I implemented a PI control algorithm and a complex PWM modulator in FPGA fabric and CPU to control a high power cascaded H-Bridge converter.
+Based on a simulation and multiple research papers I implemented a PI control algorithm and a complex PWM modulator in FPGA fabric and CPU to control a high power converter.
 The result are two IP cores that are controlled over an AXI4Lite interface by the CPU, both with PWM modulators, one having a PI controller built in and the other multi channel ADC support.
 A low level C driver can be used to communicate with the cores from the ARM CPU on the Zynq SoC.
 
