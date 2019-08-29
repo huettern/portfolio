@@ -41,6 +41,10 @@ p {
   font-family: 'Open Sans', sans-serif;
 }
 
+figcaption {
+  text-align: center;
+}
+
 
 footer {
   padding: 30px 30px 30px 30px;
@@ -466,6 +470,8 @@ section {
 
 .main-case-study img {
   max-width: 100%;
+  display: block;
+  margin: auto;
 }
 
 .main-case-study .title {
@@ -491,7 +497,14 @@ section {
 
 .case-study-item img {
   max-width: 100%;
+  max-height: 100%;
   margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+
+.case-study-item-img-container {
+  height: 230px;
   margin-bottom: 1em;
 }
 

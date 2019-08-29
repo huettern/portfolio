@@ -9,11 +9,14 @@
             {{ range where .Site.Pages "Type" "projects" }}
                 {{ if .Params.case_short_title }}
                 <div class="case-study-item">
-                    <a href="{{ .URL }}"><img src="{{ $baseUrl }}img/{{ .Params.thumbnail }}" alt=""></a>
+                    <div class="case-study-item-img-container" style="">
+                        <a href="{{ .URL }}"><img src="{{ $baseUrl }}img/{{ .Params.thumbnail }}" alt=""></a>
+                    </div>
                     <h4>{{ .Params.case_short_title }}</h4>
                     <h5>{{ .Params.case_subtitle }}</h5>
                     <p>{{ .Params.case_description }}</p>
-                    <a href="{{ .URL }}" class="read-more">Read Me</a>
+                    <div class="flex-fill"></div>
+                    <a href="{{ .URL }}" class="read-more">Read More</a>
                 </div>
                 {{ end }}
             {{ end }}

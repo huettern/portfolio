@@ -2,7 +2,13 @@
     <div class="main-case-study">
         <h1 class="title" style="text-align: center;">{{ .Params.case_title }}</h1>
         <h2 class="subtitle" style="text-align: center;">{{ .Params.case_subtitle }}</h2>
-        <img src="{{ .Site.BaseURL }}img/{{ .Params.case_feature_img }}" alt="">
+        <p style="text-align:center;margin-top: 0.5em;">
+                <strong>Posted on</strong> {{ .Date.Format "Jan 2nd 2006" }} 
+            </p>
+        <figure>
+          <img src="{{ .Site.BaseURL }}img/{{ .Params.case_feature_img }}" alt="" style="">
+          <figcaption>{{ .Params.feature_img_caption | markdownify }}</figcaption>
+        </figure>
         <p class="summary">{{ .Params.case_summary }}</p>
         <div class="case-details">
             <div class="case-details-item">
