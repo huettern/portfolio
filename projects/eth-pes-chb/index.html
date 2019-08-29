@@ -13,7 +13,7 @@
 <meta name="twitter:image" content="https://xn--htter-kva.ch/img/portrait_800.png">
 <meta name="keywords" content="Noah, Hütter, Huetter, Noah Hütter, Noah Huetter, Electronics, Electrical Engineer, ETH Zurich, ETH, FHNW, FPGA, Linux, Zynq, Embedded">
 
-<title>BA Thesis | diip</title>
+<title>FPGA for Power Electronics Control</title>
 
 <link rel="icon" href="https://xn--htter-kva.ch/img/tux_pitaya_round-min-crop.png" type="image/x-icon">
 <link rel="shortcut icon" href="https://xn--htter-kva.ch/img/tux_pitaya_round-min-crop.png" type="image/x-icon">
@@ -86,14 +86,14 @@ if (!doNotTrack) {
 
         <section>
     <div class="main-case-study">
-        <h1 class="title" style="text-align: center;">Distributed FPGA for Enhanced Image Processing</h1>
-        <h2 class="subtitle" style="text-align: center;">Bachelor&#39;s Thesis</h2>
+        <h1 class="title" style="text-align: center;">Control of Power Electronics using FPGA and Zynq</h1>
+        <h2 class="subtitle" style="text-align: center;">ETH Research Assistant</h2>
         <p style="text-align:center;margin-top: 0.5em;">
-                <strong>Posted on</strong> Mar 11nd 2019 
+                <strong>Posted on</strong> Aug 28nd 2019 
             </p>
         <figure>
-          <img src="https://xn--htter-kva.ch/img/diip/diip-cover.png" alt="" style="">
-          <figcaption></figcaption>
+          <img src="https://xn--htter-kva.ch/img/eth/converter.png" alt="" style="">
+          <figcaption>Source: <a href="https://pes.ee.ethz.ch/research/research-and-thesis-projects/ac-dc-converters/AC-DC-Converters-3.html">https://pes.ee.ethz.ch/research/research-and-thesis-projects/ac-dc-converters/AC-DC-Converters-3.html</a></figcaption>
         </figure>
         <p class="summary"></p>
         <div class="case-details">
@@ -102,25 +102,19 @@ if (!doNotTrack) {
                     
                     <br>Noah Hütter
                     
-                    <br>Jan Stocker
-                    
                 </p>
             </div>
             <div class="case-details-item">
                 <p><strong>Roles</strong>
                     
-                    <br>Ethernet communication
-                    
-                    <br>Image Processing
+                    <br>Research Assistant
                     
                 </p>
             </div>
             <div class="case-details-item">
                 <p><strong>Methods</strong>
                     
-                    <br>VHDL/C&#43;&#43;
-                    
-                    <br>Vivado HLS/VHDL
+                    <br>VHDL/C, Xilinx Zynq, Cocotb, Markdown
                     
                 </p>
             </div>
@@ -130,16 +124,9 @@ if (!doNotTrack) {
             
             
             <div class="link-div">
-                <a href="https://github.com/hargorin/diip" target="blank" class="case-detail-link">
-                    <i class="fab fa-github"></i>
-                    View GitHub Page
-                </a>
-            </div>
-            
-            <div class="link-div">
-                <a href="https://github.com/hargorin/diip/releases/download/v3.1/p6_diip_huetter_stocker.pdf" target="blank" class="case-detail-link">
-                    <i class="fa fa-download"></i>
-                    Download Report
+                <a href="https://pes.ee.ethz.ch" target="blank" class="case-detail-link">
+                    <i class="fas fa-link"></i>
+                    ETH Power Electronic Systems Laboratory
                 </a>
             </div>
             
@@ -155,27 +142,27 @@ if (!doNotTrack) {
 
 <h1 id="abstract">Abstract</h1>
 
-<p>In the world of self-driving cars and virtual reality games it is becoming
-increasingly important to represent digitally what we see.
-Therefore, using high resolution
-cameras, images of the environment have been recorded.
-These large images are processed to be presented three dimensionally.
-This image processing task needs to be accelerated to get a fast work flow.
-A dedicated hardware approach using Field Programmable Gate Arrays (FPGA) was
-implemented that is scalable onto multiple FPGAs.</p>
+<p>Based on a simulation and multiple research papers I implemented a PI control algorithm and a complex PWM modulator in FPGA fabric and CPU to control a high power converter.
+The result are two IP cores that are controlled over an AXI4Lite interface by the CPU, both with PWM modulators, one having a PI controller built in and the other multi channel ADC support.
+A low level C driver can be used to communicate with the cores from the ARM CPU on the Zynq SoC.</p>
 
-<p>In a first approach High Level Synthesis was used to describe a Wallis local contrast enhancement filter in C/C++ language that was then synthesized to hardware description language. In order to further improve throughput a VHDL solution was implemented. A memory management unit was introduced to cache necessary image data to reduce Ethernet bandwidth usage.</p>
+<h1 id="methods">Methods</h1>
 
-<p>The result is an image
-processing core and a file transfer protocol stack on top of the User Datagram
-Protocol (UDP) to transfer the images from a computer to the FPGA over gigabit Ethernet.
-The Wallis filter core processes data at a rate of one
-pixel per clock at 125MHz which corresponds to 125 megapixels per second.
-Studies on scalability show how the processing load can be distributed onto multiple FPGA on a local area network and benchmarks present the performance against CPU based image processing.</p>
+<p>All hardware code is written in VHDL and simulated using the open source VHDL vimulatur <a href="http://ghdl.free.fr/">ghdl</a>.
+Testbenches are written in Python to be used with the <a href="https://cocotb.readthedocs.io/en/latest/">Cocotb</a> testbench environment.
+This workflow enabled fast verification because the stimuli generation of complex interfaces such as AXI4 is already built into Cocotb.</p>
 
-<p>With some additions, workload distribution is possible. This study proves
-that a dedicated hardware approach for image processing is possible and will
-speed up the process of creating virtual representations of reality.</p>
+<p><img src="wave.png" alt="" /></p>
+
+<p>The documentation is written in Markdown.
+Escpecially register documentation is vital when developing AXI4 IP cores.
+By writing in Markdown language I could make use of version control and the automatic linting of the version control server.</p>
+
+<h1 id="hardware">Hardware</h1>
+
+<p>A Xilinx Zynq FPGA + CPU system on chip is used for the project.
+It allows for the time critical parts can be implemented in hardware and the computation intensive task to be executed by the CPU.
+Furthermore a wide range of communication peripherals built into the SoC enables easy communication.</p>
 
             </div>
         </section>

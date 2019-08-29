@@ -221,9 +221,11 @@ rm initramfs-vanilla.gz</code></pre></div>
 <li><code>find .</code> lists all files in the current directory</li>
 <li><code>sort</code> sort files alphabetically</li>
 <li><code>cpio</code> Create new archive in the <code>newc</code> format</li>
-<li><code>gzip</code> compress the created archive</li>
+
+<li><p><code>gzip</code> compress the created archive</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find . | sort | cpio --quiet -o -H newc | gzip -9 &gt; ../initrd.gz</code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find . | sort | cpio --quiet -o -H newc | gzip -9 &gt; ../initrd.gz</code></pre></div>
+
 <h3 id="exit">Exit</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ..</code></pre></div>
 <h2 id="generate-image-for-u-boot">Generate image for U-Boot</h2>
@@ -234,9 +236,11 @@ rm initramfs-vanilla.gz</code></pre></div>
 <li><code>-A arm</code> for arm architecture</li>
 <li><code>-T ramdisk</code> image type ramdisk</li>
 <li><code>-C gzip</code> compress image with gzip</li>
-<li><code>-d initrd.gz</code> use image data from initrd.gz</li>
+
+<li><p><code>-d initrd.gz</code> use image data from initrd.gz</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkimage -A arm -T ramdisk -C gzip -d initrd.gz uInitrd</code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkimage -A arm -T ramdisk -C gzip -d initrd.gz uInitrd</code></pre></div>
+
 <h2 id="linux-modules">Linux modules</h2>
 
 <h3 id="copy-modules-from-our-linux-kernel">Copy modules from our Linux Kernel</h3>
@@ -260,9 +264,11 @@ This command looks for all <code>.ko</code> files, sets user and group to <code>
 
 <ul>
 <li>Copy all <code>ar*</code> files</li>
-<li>Copy all <code>rt*</code> files</li>
+
+<li><p>Copy all <code>rt*</code> files</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tar -zxf $firmware_tar --directory<span style="color:#f92672">=</span>alpine-modloop/lib/modules --warning<span style="color:#f92672">=</span>no-unknown-keyword --strip-components<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> --wildcards lib/firmware/ar* lib/firmware/rt*</code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tar -zxf $firmware_tar --directory<span style="color:#f92672">=</span>alpine-modloop/lib/modules --warning<span style="color:#f92672">=</span>no-unknown-keyword --strip-components<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> --wildcards lib/firmware/ar* lib/firmware/rt*</code></pre></div>
+
 <p>Additional firmware download and untar:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">add_fw<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;linux-firmware-ath9k_htc-20190322-r0.apk linux-firmware-brcm-20190322-r0.apk linux-firmware-rtlwifi-20190322-r0.apk&#34;</span>
 <span style="color:#66d9ef">for</span> tar in $add_fw
@@ -304,12 +310,14 @@ cp /etc/resolv.conf $root_dir/etc/</code></pre></div>
 <li><code>--update-cache</code> does what it says it does</li>
 <li><code>--allow-untrusted</code> yap, even unsigned packages</li>
 <li><code>--initdb</code> undocumented</li>
-<li><code>add alpine-base</code> tell apk to install the alpine base system</li>
-</ul>
+
+<li><p><code>add alpine-base</code> tell apk to install the alpine base system</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo chroot $root_dir /sbin/apk.static <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --repository $alpine_url/main <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --update-cache --allow-untrusted --initdb <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  add alpine-base</code></pre></div>
+</span><span style="color:#ae81ff"></span>--repository $alpine_url/main <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--update-cache --allow-untrusted --initdb <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>add alpine-base</code></pre></div></li>
+</ul>
+
 <p>Create a repositories file for upstream repository path.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo $alpine_url/main &gt; $root_dir/etc/apk/repositories
 echo $alpine_url/community &gt;&gt; $root_dir/etc/apk/repositories</code></pre></div>
