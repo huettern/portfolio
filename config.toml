@@ -92,8 +92,8 @@ paginate = 2
 [params.recent_posts]
     enable = true
     title = "Recent posts"
-    subtitle = "Subtitle comes here"
-    nposts = 4
+    subtitle = ""
+    nposts = 6
 
 [params.footer]
     enable = true

@@ -33,3 +33,9 @@ These posts show how to run Linux on the Zynq.
 I like making my life easy. Here I'd like to share some of those nifty tricks that safe you a lot of pain.
 
 {{< post category="hacks" >}}
+
+## Microcontrollers
+My first projects in the Electronics world involved microcontrollers. From simple 8 pin micros to multicore embedded SoCs I've seen them all. 
+Some writeups of meaningful projects might appear under this category.
+
+{{< post category="microcontroller" >}}
