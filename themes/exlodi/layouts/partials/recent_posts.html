@@ -7,7 +7,8 @@
         <div class="case-studies-wrapper">
             {{ $baseUrl := .Site.BaseURL }}
 
-            {{ range where .Pages "Type" "posts" | first .Site.Params.recent_posts.nposts}}
+            {{ range where .Site.Pages "Type" "posts" | first .Site.Params.recent_posts.nposts}}
+            {{ if eq .Layout "post" }}
             <div class="case-study-item">
                 <div class="case-study-img">
                     <a class="list-entry-link text-uppercase" href="{{ .Permalink }}">{{ with .Params.image }}<img src="{{ . | absURL }}" alt="post-image" class="img-responsive">{{ end }}
@@ -26,6 +27,7 @@
                 </p>
                 <a href="{{ .URL }}" class="read-more">Read Me</a>
             </div>
+            {{ end }}
             {{ end }}
 
             
