@@ -8,6 +8,12 @@
 			"description" : "After graduating from FHNW I started the Master of Science study to deepen my knowledge in electronics and math."
 		},
 		{
+			"timeperiod" : "November 2019 - July 2020",
+			"company" : "Mettler Toledo",
+			"position" : "Part Time Electrical Engineer",
+			"description" : "Design of analog circuits and prototyping of high speed data acquisition using FPGA"
+		},
+		{
 			"timeperiod" : "August 2015 - August 2018",
 			"company" : "FHNW Brugg-Windisch",
 			"position" : "BSc in Electrical Engineering and Information Technology",
