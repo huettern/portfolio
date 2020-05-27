@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Noah Hütter Portfolio</title>
@@ -29,7 +29,8 @@ Requirements  Off-site backup at low to no cost therefore cloud services are exp
       <guid>https://xn--htter-kva.ch/posts/pitaya-alpine/</guid>
       <description>Disclaimer: This code is largely copied from https://github.com/pavel-demin/red-pitaya-notes, licensed under MIT license.
 Prerequisites This tutorial is built on top of the Linux on Zynq tutorial. It requires the Kernel built in the previous post. So if you want to get it working, start over at Linux on Zynq and come back here after you are done.
-Clone my zynq-sandbox repository from github if you have not done so already.</description>
+Clone my zynq-sandbox repository from github if you have not done so already.
+git clone https://github.</description>
     </item>
     
     <item>

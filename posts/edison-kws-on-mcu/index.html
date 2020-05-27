@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#00ff00">
+<meta name="description" content="Noah Hütter&#39;s Academic Achievements and a Selection of Electronics and Embedded themed Blog Posts focusing on FPGA, Linux and other fast stuff.">
+<meta property="og:description" content="Noah Hütter&#39;s Academic Achievements and a Selection of Electronics and Embedded themed Blog Posts focusing on FPGA, Linux and other fast stuff.">
+<meta name="twitter:description" content="Noah Hütter&#39;s Academic Achievements and a Selection of Electronics and Embedded themed Blog Posts focusing on FPGA, Linux and other fast stuff.">
+<meta property="og:image" content="https://xn--htter-kva.ch/img/portrait_800.png">
+<meta name="twitter:image" content="https://xn--htter-kva.ch/img/portrait_800.png">
+<meta name="keywords" content="Noah, Hütter, Huetter, Noah Hütter, Noah Huetter, Electronics, Electrical Engineer, ETH Zurich, ETH, FHNW, FPGA, Linux, Zynq, Embedded">
+
+<title>Edison - Keyword Spotting on Microcontroller</title>
+
+<link rel="icon" href="https://xn--htter-kva.ch/img/tux_pitaya_round-min-crop.png" type="image/x-icon">
+<link rel="shortcut icon" href="https://xn--htter-kva.ch/img/tux_pitaya_round-min-crop.png" type="image/x-icon">
+
+
+
+<link rel="stylesheet" href="https://xn--htter-kva.ch/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="
+sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://xn--htter-kva.ch/css/final.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
+
+
+
+<script src="https://xn--htter-kva.ch/js/jquery.min.js"></script>
+<script src="https://xn--htter-kva.ch/js/bootstrap.min.js"></script>
+<script src="https://xn--htter-kva.ch/js/main.js"></script>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-40883435-8', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+    </head>
+    <body>
+        <a id="bttbutton" class="bg-dark"></a>
+        <div class="progressCounter"></div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+  <a class="navbar-brand" href="/">hütter.ch</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">   
+
+    </ul>
+
+    <ul class="navbar-nav">      
+        
+
+        
+        
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/posts/">Blog posts</a>
+            </li>
+          
+        
+
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+        
+            <div class="jumbotron" style="background: url(https://xn--htter-kva.ch/img/edison/edison-head.png) no-repeat center center;">
+            </div>
+        
+
+        <section>
+            <div class="content-post">
+            <h1>Edison - Keyword Spotting on Microcontroller</h1>
+            <p style="text-align:center;margin-top: 0.5em;">
+                <strong>Posted on</strong> 27 May 2020 
+                <strong>By</strong> Noah Hütter 
+            </p>
+
+            <hr>
+            <h2>Description</h2>
+            <p>In my first project on the topic of Machine Learning I implemented a simple keyword spotting algorithm on a Microcontroller. In this post I will walk you through the steps of implementing and testing feature extraction and a neural network on a MCU!</p>
+
+            <h2>Table of Contents</h2>
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-tldr">1. TLDR</a></li>
+    <li><a href="#2-prerequisites">2. Prerequisites</a></li>
+    <li><a href="#3-keyword-spotting-task">3. Keyword Spotting Task</a>
+      <ul>
+        <li><a href="#31-cepstral-coefficients">3.1 Cepstral Coefficients</a></li>
+        <li><a href="#32-neural-network">3.2 Neural Network</a></li>
+        <li><a href="#33-network-output-postprocessing">3.3 Network Output Postprocessing</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-data-acquisition">4. Data Acquisition</a></li>
+    <li><a href="#5-training">5. Training</a></li>
+    <li><a href="#6-implementation">6. Implementation</a></li>
+    <li><a href="#7-testing">7. Testing</a></li>
+    <li><a href="#8-conclusion">8. Conclusion</a></li>
+  </ul>
+</nav>
+            <h2 id="1-tldr">1. TLDR</h2>
+<p>Download pre-processed audio data, train the model, implement it and compile the MCU code.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># clone and setup</span>
+git clone https://github.com/noah95/edison
+cd edison
+source bootstrap.sh
+
+<span style="color:#75715e"># fetch training data and pre-trained model</span>
+curl -L https://github.com/noah95/edison/releases/download/v2.0.0-RC1/keywords-8-noah.tar.gz | tar xvz
+curl -L https://github.com/noah95/edison/releases/download/v2.0.0-RC1/kws_model.h5 -o cache/kws_keras/kws_model.h5
+
+<span style="color:#75715e"># train model</span>
+./main.py train keras train
+cp cache/kws_keras/kws_model.h5 ../firmware/src/ai/cube/kws/kws_model.h5
+</code></pre></div><ul>
+<li>open cube project firmware/CubeMX/edison.ioc</li>
+<li>Additional Software -&gt; STMicro&hellip; -&gt; kws</li>
+<li>Browse: select firmware/src/ai/cube/kws/kws_model.h5</li>
+<li>Analyse</li>
+<li>click GENERATE CODE</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># import net to firmware folder</span>
+cd ../firmware/
+make import-cubeai-net
+
+<span style="color:#75715e"># build MCU code</span>
+make -j8
+
+<span style="color:#75715e"># Flash board</span>
+make flash
+</code></pre></div><h2 id="2-prerequisites">2. Prerequisites</h2>
+<p>To start experimenting with keyword spotting, clone my repository</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/noah95/edison
+cd edison
+</code></pre></div><p>and setup the python virtual environment. This script initializes required submodules, sets up the environment including paths and packages.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">source bootstrap.sh
+</code></pre></div><p>To recreate the graphs in this writeup, fetch my training data and a pretrained model.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd audio
+curl -L https://github.com/noah95/edison/releases/download/v2.0.0-RC1/keywords-8-noah.tar.gz | tar xvz
+curl -L https://github.com/noah95/edison/releases/download/v2.0.0-RC1/kws_model.h5 -o cache/kws_keras/kws_model.h5
+</code></pre></div><p>For the microcontroller code you need the <a href="https://www.st.com/en/development-tools/stm32cubemx.html">STM32CubeMX initialization code generator</a>
+with the X-CUBE-AI extension that can be installed from within CubeMX. Furthermore a <code>arm-none-eabi</code> toolchain is required. During the
+course of this project the following version was used:</p>
+<pre><code>arm-none-eabi-gcc (GNU Tools for Arm Embedded Processors 8-2018-q4-major) 8.2.1 20181213 (release) [gcc-8-branch revision 267074]
+</code></pre><p>The code was run on a <a href="https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html">B-L475E-IOT01A STM32L4 Discovery kit IoT node</a> with
+<a href="https://www.adafruit.com/product/1426">WS2811</a> LEDs for indication. With some modifications the code can be ported to any STM32L4
+based platform with onboard PDM MEMS microphones.</p>
+<p>Now you are good to go!</p>
+<h2 id="3-keyword-spotting-task">3. Keyword Spotting Task</h2>
+<p>The pipeline of audio processing includes data acquisition, feature extraction, the neural network and a small state machine for processing
+the networks predictions. I won&rsquo;t go into detail of data acquisition, so we start at the feature extraction which is done by means of
+Mel frequency cepstral coefficients. A subset of these coefficients is then fed into a convolutional neural network which is trained to
+predict, which keyword was spoken. The state machine then decides, what action should be performed.</p>
+<p><img src="kws-task.png" alt=""></p>
+<h3 id="31-cepstral-coefficients">3.1 Cepstral Coefficients</h3>
+<p>The raw audio data is pre-processed before fed into the neural network. This brings the advantage of</p>
+<ul>
+<li>Reducing the dimensionality at the net input: 1024 audio samples get compressed to 13 coefficients. This reduces network complexity which results in shorter training time and faster inference.</li>
+<li>Removing irrelevant data such as noise.</li>
+<li>Transform the linear frequency response to a logarithmic which is more similar to a human ear.</li>
+</ul>
+<p>The technique applied here is called <strong>Mel frequency cepstral coefficients</strong> or MFCC for short.</p>
+<p><img src="mfcc.png" alt="MFCC pipeline"></p>
+<p>To see what exactly is going on, go to the <code>audio</code> directory of the <code>edison</code> repository and launch the MFCC example.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./main.py mfcc host
+</code></pre></div><p>Multiple plots should pop up. Close all except the one titled <em>Own implementation</em>. In the first graph the raw audio sample is shown with the red area indicating the current window location.
+The audio that is processed in chunks of 1024 samples. This chunk is first transformed to the frequency domain using FFT and the magnitude is kept. This is shown in the graph at the bottom left.
+We then map these powers to the Mel scale using triangular overlapping windows. This is the step where the transformation to the logarithmic perception of human hearing is done.
+Notice the overlapping triangles in the top right graph?</p>
+<p><a href="mfcc-tut.png"><img src="mfcc-tut.png" alt=""></a></p>
+<p>Each triangle contains a band of frequencies. The lower frequencies are resolved in greater detail (smaller distance between triangle tips), similar to our hearing that is more sensitive to changes in frequencies in the lower end of the spectrum.
+The log of these values is then transformed with a discrete cosine transform. This is the compression step mentioned earlier. The DCT is used in almost all digital media such as JPG, MPEG, MP3 and so forth to compress digital signals. The use of cosine functions as base functions allows for fewer coefficients to be required to approximate the signal.
+Or put differently: The DCT compresses the most relevant information of the input signal in its lower output coefficients.
+We can now take, say 13, of the lowest coefficients and set the others to zero and have a good approximation of our input.</p>
+<p>We now have the coefficients of a frame of 1024 samples, which corresponds to 64ms when sampling at 16kHz. If we take a keyword, say &ldquo;Edison&rdquo;, it can be up to one second long. This is why this process is repeated for the length of the network input. Issue the following command to gain some insight on how these coefficients look for different keywords:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./main.py train keras plot
+</code></pre></div><p><a href="dataset.png"><img src="dataset.png" alt=""></a></p>
+<p>The colormaps of the coefficients would make great art! Speaking of art, couldn&rsquo;t we train a network to recognize keywords in these images? And this is where the neural network comes in.</p>
+<h3 id="32-neural-network">3.2 Neural Network</h3>
+<p>This is where unknown territory begins for me. Various network topologies from different sources are compared in the following table. They differ in complexity, number of parameters and, what is most important for this project, execution time and memory usage.</p>
+<p><a href="compare.png"><img src="compare.png" alt=""></a></p>
+<p>[1] <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/speech_commands/models.py">https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/speech_commands/models.py</a>
+[2] <a href="https://github.com/majianjia/nnom/tree/master/examples/keyword_spotting">https://github.com/majianjia/nnom/tree/master/examples/keyword_spotting</a></p>
+<p>The model currently implemented in Edison is the one shown below. With the acquired data it takes only a few minutes to train. If you have any suggestions on other network topologies, I am open for comments and suggestions.</p>
+<p><a href="cnn.png"><img src="cnn.png" alt=""></a></p>
+<p>Something special about this application is the temporal dependence of the input data, meaning that one frame of coefficients is dependent on the previous but not on the next.
+This could be exploited by using a <a href="https://medium.com/@raushan2807/temporal-convolutional-networks-bfea16e6d7d2">temporal convolutional network</a> for example.
+In my case, I augmented the data in a way that they are replicated multiple times at the net input during training.
+As can be seen in the following figure, most recordings are shorter than the defined network input (31 frames of 64ms each, resulting in a 2 second window).
+To get more confident predictions and also to counteract overfitting, each recording is shifted temporally and padded with zeros.
+With the <em>Edison</em> key word, this makes for 20 variations to train on.</p>
+<p><a href="augment_input_shift.png"><img src="augment_input_shift.png" alt=""></a></p>
+<h3 id="33-network-output-postprocessing">3.3 Network Output Postprocessing</h3>
+<p>First real world testing (meaning with onboard microphone and my voice), the network output (the predictions) were very noisy.
+I tried to find a suitable threshold where a word can be considered detected but even with high thresholds, some predictions were
+unusable. To cope with this, a moving average filter on the net output was introduced. It simply averages the last value
+with the new net output to get a smoothened trace. This might be a bit hacky but worked out for this purpose.</p>
+<p>$$\text{pred}[i+1] = \alpha\cdot \text{pred}[i] + (1-\alpha)\cdot \text{netout}$$</p>
+<p><a href="slide-win.png"><img src="slide-win.png" alt=""></a></p>
+<p>So much about the theory, let&rsquo;s see how you can acquire you own voice commands and train a keyword spotting model.</p>
+<h2 id="4-data-acquisition">4. Data Acquisition</h2>
+<p>My network was trained on about one hour of recordings. This sounds like much to record but with the simple script the hour will pass in no time.
+Adjust the output directory in <code>config.py</code> and start the fun by running.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./main.py acquire acq
+</code></pre></div><p>Push the enter key without entering a number and speak the last word and the program will randomly ask you for keywords.</p>
+<p><a href="acquire.png"><img src="acquire.png" alt=""></a></p>
+<p>If you reach about 80 samples per keyword, you can proceed with the next step.</p>
+<h2 id="5-training">5. Training</h2>
+<p>The raw audio samples are pre-processed, augmented as described earlier and stored at <code>cache/kws_keras/*.npy</code>. You can download my pre-processed samples from a GitHub release if you don&rsquo;t want to record your own.
+Training is as simple as running the following command.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./main.py train keras train
+</code></pre></div><p>In the file <code>edison/train/kws_keras.py</code> you can choose between the different models, adapt hyper parameters and much more. To get a sense on how accurate the model is, run</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./main.py train keras test
+</code></pre></div><p>and you see in my case a 99.81% accuracy on test data that has never been used during the training process.</p>
+<h2 id="6-implementation">6. Implementation</h2>
+<p>Neural network inference on the microcontroller is done using the <a href="https://www.st.com/en/embedded-software/x-cube-ai.html">X-CUBE-AI</a> libraries by ST.
+They are not open source and the CubeMX tool has to be opened to convert the model which is a painstaking.
+BUT it worked very good for me during this project for highly accurate results with floating point accuracy.
+It is perfect for prototyping imo, but with the next project I will certainly look into other frameworks.</p>
+<p>End of rant. Open the CubeMX tool and load the project under <code>firmware/CubeMX/edison.ioc</code>. In the left pane, select <em>X-CUBE-AI</em> where you can find the kws network.
+Browse for the model <code>.h5</code> file and hit the analyse button. The statistics show memory usage and operation cycle count. We need the code so click
+<em>GENERATE CODE</em> and wait for it to complete.</p>
+<p><a href="cube.png"><img src="cube.png" alt=""></a></p>
+<p>To import the sources into the firmware directory, launch <code>make</code> with the argument <code>import-cubeai-net</code>. This will copy the generated sources and libraries.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make import-cubeai-net
+</code></pre></div><p>CubeAI has a built in <em>verify on target</em> function. Compile the firmware with</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make clean <span style="color:#f92672">&amp;&amp;</span> make -j16 OPMODE<span style="color:#f92672">=</span>CUBE_VERIFICATION flash
+</code></pre></div><p>and the implemented model can be verified in CubeMX giving some insights on runtime and accuracy.</p>
+<p><a href="cube-val.png"><img src="cube-val.png" alt=""></a></p>
+<h2 id="7-testing">7. Testing</h2>
+<p>The final step is to compile for actual application mode and flash to target.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make clean <span style="color:#f92672">&amp;&amp;</span> make -j16 flash
+</code></pre></div><!-- raw HTML omitted -->
+<h2 id="8-conclusion">8. Conclusion</h2>
+<p>The most effort in this project went into implementing the feature extraction, namely the MFCC calculation and the data acquisition on the board. After the
+neural network performed well on the host the implementation with CubeMX was simple. Various other frameworks were looked into, such as <a href="https://github.com/majianjia/nnom">NNoM</a>
+and <a href="https://github.com/pulp-platform/nemo/">NEMO</a> with a manual network implementation with CMSIS-NN API.
+The time ran out however to get these to work. Especially quantized networks would be interesting to benchmark since the network is performing
+outstandingly well.</p>
+<p>I can think of numerous other studies that could be performed based on this work:</p>
+<ul>
+<li>How many training samples are required for the same accuracy?</li>
+<li>What minimum energy consumption can be achieved?</li>
+<li>What is the smallest memory footprint required?</li>
+<li>Could an 8/16 bit quantized network perform equally well?</li>
+</ul>
+<p>Also architectural changes could be explored:</p>
+<ul>
+<li>The current solution is strongly dependent on microphone amplitude. Automatic gain control could make it more reliable</li>
+<li>What is the minimum number of MFCC coefficients?</li>
+<li>Would a TCN perform well?</li>
+</ul>
+<p>Some aspects were already looked into, such as a TCN (see the <code>tcn</code> branch), model quantization and implementation in CMSIS (<code>cmsis-nn</code> branch),
+NNoM (see <code>master</code> branch with <code>./main.py kws nnom</code>) and source code under <code>src/ai/nnom</code>. If you find the time to look into one of them
+or have any other work building on this project, I would be very excited to hearing from it.</p>
+
+            </div>
+
+            <div class="content-post">
+                <hr>
+                <script src="https://utteranc.es/client.js"
+                        repo="noah95/portfolio"
+                        issue-term="title"
+                        label="comments"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+
+        </section>
+
+        
+        <footer>
+    
+    
+</footer>
+        
+    </body>
+</html>

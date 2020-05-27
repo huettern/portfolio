@@ -48,6 +48,9 @@ if (!doNotTrack) {
 }
 </script>
 
+
+
+
     </head>
     <body>
         <a id="bttbutton" class="bg-dark"></a>
@@ -96,7 +99,7 @@ if (!doNotTrack) {
             <div class="content-post">
             <h1>Alpine Linux on Zynq</h1>
             <p style="text-align:center;margin-top: 0.5em;">
-                <strong>Posted on</strong> May 8nd 2019 
+                <strong>Posted on</strong> 8 May 2019 
                 <strong>By</strong> Noah Hütter 
             </p>
 
@@ -106,68 +109,56 @@ if (!doNotTrack) {
 
             <h2>Table of Contents</h2>
             <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#prerequisites">Prerequisites</a></li>
-<li><a href="#build">Build</a></li>
-<li><a href="#download-sources">Download sources</a>
-<ul>
-<li><a href="#unpack">Unpack</a></li>
-</ul></li>
-<li><a href="#create-initramfs">Create initramfs</a>
-<ul>
-<li><a href="#unzip-the-alpine-vanilla-initramfs">Unzip the Alpine vanilla initramfs</a></li>
-<li><a href="#remove-unwanted-stuff">Remove unwanted stuff</a></li>
-<li><a href="#repack-initramfs">Repack initramfs</a></li>
-<li><a href="#exit">Exit</a></li>
-</ul></li>
-<li><a href="#generate-image-for-u-boot">Generate image for U-Boot</a></li>
-<li><a href="#linux-modules">Linux modules</a>
-<ul>
-<li><a href="#copy-modules-from-our-linux-kernel">Copy modules from our Linux Kernel</a></li>
-<li><a href="#kernel-modules-form-alpine">Kernel modules form Alpine</a></li>
-<li><a href="#pack-kernel-modules-and-firmware">Pack kernel modules and firmware</a></li>
-</ul></li>
-<li><a href="#create-root">Create root</a>
-<ul>
-<li><a href="#preparations">Preparations</a></li>
-<li><a href="#chroot">Chroot</a>
-<ul>
-<li><a href="#install-some-packages">Install some packages</a></li>
-<li><a href="#init-system">init system</a></li>
-<li><a href="#configuration">Configuration</a></li>
-<li><a href="#finish-up">Finish up</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#create-zip">Create ZIP</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#build">Build</a></li>
+    <li><a href="#download-sources">Download sources</a>
+      <ul>
+        <li><a href="#unpack">Unpack</a></li>
+      </ul>
+    </li>
+    <li><a href="#create-initramfs">Create initramfs</a>
+      <ul>
+        <li><a href="#unzip-the-alpine-vanilla-initramfs">Unzip the Alpine vanilla initramfs</a></li>
+        <li><a href="#remove-unwanted-stuff">Remove unwanted stuff</a></li>
+        <li><a href="#repack-initramfs">Repack initramfs</a></li>
+        <li><a href="#exit">Exit</a></li>
+      </ul>
+    </li>
+    <li><a href="#generate-image-for-u-boot">Generate image for U-Boot</a></li>
+    <li><a href="#linux-modules">Linux modules</a>
+      <ul>
+        <li><a href="#copy-modules-from-our-linux-kernel">Copy modules from our Linux Kernel</a></li>
+        <li><a href="#kernel-modules-form-alpine">Kernel modules form Alpine</a></li>
+        <li><a href="#pack-kernel-modules-and-firmware">Pack kernel modules and firmware</a></li>
+      </ul>
+    </li>
+    <li><a href="#create-root">Create root</a>
+      <ul>
+        <li><a href="#preparations">Preparations</a></li>
+        <li><a href="#chroot">Chroot</a></li>
+      </ul>
+    </li>
+    <li><a href="#create-zip">Create ZIP</a></li>
+  </ul>
 </nav>
-            
-
-<p><em>Disclaimer: This code is largely copied from <a href="https://github.com/pavel-demin/red-pitaya-notes">https://github.com/pavel-demin/red-pitaya-notes</a>, licensed under MIT license.</em></p>
-
+            <p><em>Disclaimer: This code is largely copied from <a href="https://github.com/pavel-demin/red-pitaya-notes">https://github.com/pavel-demin/red-pitaya-notes</a>, licensed under MIT license.</em></p>
 <h2 id="prerequisites">Prerequisites</h2>
-
 <p>This tutorial is built on top of the <a href="/posts/pitaya-linux">Linux on Zynq</a> tutorial.
 It requires the Kernel built in the previous post.
 So if you want to get it working, start over at <a href="/posts/pitaya-linux">Linux on Zynq</a> and come back here after you are done.</p>
-
 <p>Clone my <code>zynq-sandbox</code> <a href="https://github.com/noah95/zynq-sandbox">repository</a> from github if you have not done so already.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/noah95/zynq-sandbox</code></pre></div>
-<p>Install <code>qemu</code> the CPU emulator.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install qemu-user-static</code></pre></div>
-<p>Change to a suitable build folder.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/noah95/zynq-sandbox
+</code></pre></div><p>Install <code>qemu</code> the CPU emulator.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install qemu-user-static
+</code></pre></div><p>Change to a suitable build folder.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p sw/linux/build/alpine
-cd sw/linux/build/alpine</code></pre></div>
-<h2 id="build">Build</h2>
-
+cd sw/linux/build/alpine
+</code></pre></div><h2 id="build">Build</h2>
 <h2 id="download-sources">Download sources</h2>
-
 <p>We define the base url to pull the sources</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alpine_url<span style="color:#f92672">=</span>http://dl-cdn.alpinelinux.org/alpine/v3.9</code></pre></div>
-<p>Next, download the sources:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alpine_url<span style="color:#f92672">=</span>http://dl-cdn.alpinelinux.org/alpine/v3.9
+</code></pre></div><p>Next, download the sources:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Alpine u-boot tar</span>
 alpine_tar<span style="color:#f92672">=</span>alpine-uboot-3.9.0-armv7.tar.gz
 curl -o $alpine_tar -L $alpine_url/releases/armv7/$alpine_tar
@@ -178,9 +169,8 @@ curl -o $tools_tar -L $alpine_url/main/armv7/$tools_tar
 
 <span style="color:#75715e"># Firmware</span>
 firmware_tar<span style="color:#f92672">=</span>linux-firmware-other-20190322-r0.apk
-curl -o $firmware_tar -L $alpine_url/main/armv7/$firmware_tar</code></pre></div>
-<h3 id="unpack">Unpack</h3>
-
+curl -o $firmware_tar -L $alpine_url/main/armv7/$firmware_tar
+</code></pre></div><h3 id="unpack">Unpack</h3>
 <p>Now we unpack the downloaded sources:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Alpine uboot</span>
 mkdir alpine-uboot
@@ -188,152 +178,126 @@ tar -zxf $alpine_tar --directory<span style="color:#f92672">=</span>alpine-uboot
 
 <span style="color:#75715e"># Alpine tools</span>
 mkdir alpine-tools
-tar -zxf $tools_tar --directory<span style="color:#f92672">=</span>alpine-tools --warning<span style="color:#f92672">=</span>no-unknown-keyword</code></pre></div>
-<h2 id="create-initramfs">Create initramfs</h2>
-
+tar -zxf $tools_tar --directory<span style="color:#f92672">=</span>alpine-tools --warning<span style="color:#f92672">=</span>no-unknown-keyword
+</code></pre></div><h2 id="create-initramfs">Create initramfs</h2>
 <h3 id="unzip-the-alpine-vanilla-initramfs">Unzip the Alpine vanilla initramfs</h3>
-
 <p>Create a directory and change into it</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir alpine-initramfs
-cd alpine-initramfs</code></pre></div>
-<p>Unzip the alpine initramfs vanilla image.
+cd alpine-initramfs
+</code></pre></div><p>Unzip the alpine initramfs vanilla image.
 The <code>gzip</code> commands decompresses (<code>-d</code>) and outputs on stdout (<code>-c</code>).
 Gzip won&rsquo;t decompress if it does not know the file suffix, so the file is
 copied to the current directory and then unpacked.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp ../alpine-uboot/boot/initramfs-vanilla initramfs-vanilla.gz
 gzip -dc initramfs-vanilla.gz | cpio -id
-rm initramfs-vanilla.gz</code></pre></div>
-<h3 id="remove-unwanted-stuff">Remove unwanted stuff</h3>
-
+rm initramfs-vanilla.gz
+</code></pre></div><h3 id="remove-unwanted-stuff">Remove unwanted stuff</h3>
 <p>Remove kernel module configurations</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf etc/modprobe.d</code></pre></div>
-<p>Remove kernel firmware (binary drivers)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf lib/firmware</code></pre></div>
-<p>Remove kernel modules</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf lib/modules</code></pre></div>
-<p>Remove cache</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf var</code></pre></div>
-<h3 id="repack-initramfs">Repack initramfs</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf etc/modprobe.d
+</code></pre></div><p>Remove kernel firmware (binary drivers)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf lib/firmware
+</code></pre></div><p>Remove kernel modules</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf lib/modules
+</code></pre></div><p>Remove cache</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf var
+</code></pre></div><h3 id="repack-initramfs">Repack initramfs</h3>
 <p>Now that the Alpine initramfs is cleaned up, we repack the initramfs.</p>
-
 <ul>
 <li><code>find .</code> lists all files in the current directory</li>
 <li><code>sort</code> sort files alphabetically</li>
 <li><code>cpio</code> Create new archive in the <code>newc</code> format</li>
-
-<li><p><code>gzip</code> compress the created archive</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find . | sort | cpio --quiet -o -H newc | gzip -9 &gt; ../initrd.gz</code></pre></div></li>
+<li><code>gzip</code> compress the created archive</li>
 </ul>
-
-<h3 id="exit">Exit</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ..</code></pre></div>
-<h2 id="generate-image-for-u-boot">Generate image for U-Boot</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find . | sort | cpio --quiet -o -H newc | gzip -9 &gt; ../initrd.gz
+</code></pre></div><h3 id="exit">Exit</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ..
+</code></pre></div><h2 id="generate-image-for-u-boot">Generate image for U-Boot</h2>
 <p>Now that we have packed the initramfs into a compressed archive, a bootimage is generated of U-Boot.</p>
-
 <ul>
 <li><code>-A arm</code> for arm architecture</li>
 <li><code>-T ramdisk</code> image type ramdisk</li>
 <li><code>-C gzip</code> compress image with gzip</li>
-
-<li><p><code>-d initrd.gz</code> use image data from initrd.gz</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkimage -A arm -T ramdisk -C gzip -d initrd.gz uInitrd</code></pre></div></li>
+<li><code>-d initrd.gz</code> use image data from initrd.gz</li>
 </ul>
-
-<h2 id="linux-modules">Linux modules</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkimage -A arm -T ramdisk -C gzip -d initrd.gz uInitrd
+</code></pre></div><h2 id="linux-modules">Linux modules</h2>
 <h3 id="copy-modules-from-our-linux-kernel">Copy modules from our Linux Kernel</h3>
-
 <p>We want to use the modules from the previously built Linux kernel.
 First we create a target directory to copy these files.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">linux_dir<span style="color:#f92672">=</span>../linux-4.14/
-linux_ver<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>.14.101-xilinx
+linux_ver<span style="color:#f92672">=</span>4.14.101-xilinx
 modules_dir<span style="color:#f92672">=</span>alpine-modloop/lib/modules/$linux_ver
-mkdir -p $modules_dir/kernel</code></pre></div>
-<p>Now look for all <code>.ko</code> files in the kernel and copy them to the new location.
+mkdir -p $modules_dir/kernel
+</code></pre></div><p>Now look for all <code>.ko</code> files in the kernel and copy them to the new location.
 This command looks for all <code>.ko</code> files, sets user and group to <code>0</code> and copies them to the target location.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find $linux_dir -name <span style="color:#ae81ff">\*</span>.ko -printf <span style="color:#e6db74">&#39;%P\0&#39;</span> | tar --directory<span style="color:#f92672">=</span>$linux_dir --owner<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> --group<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> --null --files-from<span style="color:#f92672">=</span>- -zcf - | tar -zxf - --directory<span style="color:#f92672">=</span>$modules_dir/kernel</code></pre></div>
-<p>Copy the modules order and builtin files to the destination.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp $linux_dir/modules.order $linux_dir/modules.builtin $modules_dir/</code></pre></div>
-<p>From the copied kernel modules we generate modules.dep and map files.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">depmod -a -b alpine-modloop $linux_ver</code></pre></div>
-<h3 id="kernel-modules-form-alpine">Kernel modules form Alpine</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find $linux_dir -name <span style="color:#ae81ff">\*</span>.ko -printf <span style="color:#e6db74">&#39;%P\0&#39;</span> | tar --directory<span style="color:#f92672">=</span>$linux_dir --owner<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> --group<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> --null --files-from<span style="color:#f92672">=</span>- -zcf - | tar -zxf - --directory<span style="color:#f92672">=</span>$modules_dir/kernel
+</code></pre></div><p>Copy the modules order and builtin files to the destination.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp $linux_dir/modules.order $linux_dir/modules.builtin $modules_dir/
+</code></pre></div><p>From the copied kernel modules we generate modules.dep and map files.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">depmod -a -b alpine-modloop $linux_ver
+</code></pre></div><h3 id="kernel-modules-form-alpine">Kernel modules form Alpine</h3>
 <p>Now we copy selected firmware binaries from the alpine firmware archive into our alpine-modloop directory.</p>
-
 <ul>
 <li>Copy all <code>ar*</code> files</li>
-
-<li><p>Copy all <code>rt*</code> files</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tar -zxf $firmware_tar --directory<span style="color:#f92672">=</span>alpine-modloop/lib/modules --warning<span style="color:#f92672">=</span>no-unknown-keyword --strip-components<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> --wildcards lib/firmware/ar* lib/firmware/rt*</code></pre></div></li>
+<li>Copy all <code>rt*</code> files</li>
 </ul>
-
-<p>Additional firmware download and untar:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tar -zxf $firmware_tar --directory<span style="color:#f92672">=</span>alpine-modloop/lib/modules --warning<span style="color:#f92672">=</span>no-unknown-keyword --strip-components<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> --wildcards lib/firmware/ar* lib/firmware/rt*
+</code></pre></div><p>Additional firmware download and untar:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">add_fw<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;linux-firmware-ath9k_htc-20190322-r0.apk linux-firmware-brcm-20190322-r0.apk linux-firmware-rtlwifi-20190322-r0.apk&#34;</span>
 <span style="color:#66d9ef">for</span> tar in $add_fw
 <span style="color:#66d9ef">do</span>
   url<span style="color:#f92672">=</span>$alpine_url/main/armv7/$tar
   curl -L $url -o $tar
   tar -zxf $tar --directory<span style="color:#f92672">=</span>alpine-modloop/lib/modules --warning<span style="color:#f92672">=</span>no-unknown-keyword --strip-components<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-<span style="color:#66d9ef">done</span></code></pre></div>
-<h3 id="pack-kernel-modules-and-firmware">Pack kernel modules and firmware</h3>
-
+<span style="color:#66d9ef">done</span>
+</code></pre></div><h3 id="pack-kernel-modules-and-firmware">Pack kernel modules and firmware</h3>
 <p>Now we pack the kernel modules and firmware into a squashfs file using xz compression.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mksquashfs alpine-modloop/lib modloop -b <span style="color:#ae81ff">1048576</span> -comp xz -Xdict-size <span style="color:#ae81ff">100</span>%</code></pre></div>
-<h2 id="create-root">Create root</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mksquashfs alpine-modloop/lib modloop -b <span style="color:#ae81ff">1048576</span> -comp xz -Xdict-size 100%
+</code></pre></div><h2 id="create-root">Create root</h2>
 <p>Now its time to create the root partition and some empty directories.</p>
-
 <h3 id="preparations">Preparations</h3>
-
 <p>Create directory.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root_dir<span style="color:#f92672">=</span>alpine-root
 mkdir -p $root_dir/usr/bin
 mkdir -p $root_dir/etc
-mkdir -p $root_dir/etc/apk</code></pre></div>
-<p>Create an apk cache where the SD-card will be mounted on the target.</p>
+mkdir -p $root_dir/etc/apk
+</code></pre></div><p>Create an apk cache where the SD-card will be mounted on the target.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p $root_dir/media/mmcblk0p1/cache
-ln -s /media/mmcblk0p1/cache $root_dir/etc/apk/cache</code></pre></div>
-<p>Copy contents from apline root dir into alpine-root.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp -r alpine/root/etc $root_dir/</code></pre></div>
-<p>Copy alpine binary and qemu arm CPU emulator to install alpine.
+ln -s /media/mmcblk0p1/cache $root_dir/etc/apk/cache
+</code></pre></div><p>Copy contents from apline root dir into alpine-root.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp -r alpine/root/etc $root_dir/
+</code></pre></div><p>Copy alpine binary and qemu arm CPU emulator to install alpine.
 Further, for the chroot environment to find the alpine servers, our hosts resolv config is copied.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp -r alpine-tools/sbin $root_dir/
 cp /usr/bin/qemu-arm-static $root_dir/usr/bin/
-cp /etc/resolv.conf $root_dir/etc/</code></pre></div>
-<p>We now install alpine by running apk.static in a chroot.</p>
-
+cp /etc/resolv.conf $root_dir/etc/
+</code></pre></div><p>We now install alpine by running apk.static in a chroot.</p>
 <ul>
 <li>apk is the alpine packet manager</li>
 <li><code>--repository $alpine_url/main</code> tells apk which repository to use</li>
 <li><code>--update-cache</code> does what it says it does</li>
 <li><code>--allow-untrusted</code> yap, even unsigned packages</li>
 <li><code>--initdb</code> undocumented</li>
-
-<li><p><code>add alpine-base</code> tell apk to install the alpine base system</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo chroot $root_dir /sbin/apk.static <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--repository $alpine_url/main <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--update-cache --allow-untrusted --initdb <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>add alpine-base</code></pre></div></li>
+<li><code>add alpine-base</code> tell apk to install the alpine base system</li>
 </ul>
-
-<p>Create a repositories file for upstream repository path.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo chroot $root_dir /sbin/apk.static <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --repository $alpine_url/main <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --update-cache --allow-untrusted --initdb <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  add alpine-base
+</code></pre></div><p>Create a repositories file for upstream repository path.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo $alpine_url/main &gt; $root_dir/etc/apk/repositories
-echo $alpine_url/community &gt;&gt; $root_dir/etc/apk/repositories</code></pre></div>
-<h3 id="chroot">Chroot</h3>
-
+echo $alpine_url/community &gt;&gt; $root_dir/etc/apk/repositories
+</code></pre></div><h3 id="chroot">Chroot</h3>
 <p>Now we chroot into the alpine-base installation and complete further installations.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo chroot $root_dir /bin/sh</code></pre></div>
-<h4 id="install-some-packages">Install some packages</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo chroot $root_dir /bin/sh
+</code></pre></div><h4 id="install-some-packages">Install some packages</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apk update
-apk add haveged openssh iw iptables curl wget less nano bc dcron</code></pre></div>
-<h4 id="init-system">init system</h4>
+apk add haveged openssh iw iptables curl wget less nano bc dcron
 
+</code></pre></div><h4 id="init-system">init system</h4>
 <p>Alpine-linux uses <a href="https://wiki.gentoo.org/wiki/OpenRC">OpenRC</a> for its init system.
 More infos can be found <a href="https://wiki.alpinelinux.org/wiki/Alpine_Linux_Init_System">here</a>.
 Add services to the boot runlevel. From the alpine documentation:</p>
-
 <p><em>Generally the only services you should add to the boot runlevel are those which deal with the mounting of filesystems, set the initial state of attached peripherals and logging</em></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -s /etc/init.d/bootmisc etc/runlevels/boot/bootmisc
 ln -s /etc/init.d/hostname etc/runlevels/boot/hostname
@@ -342,58 +306,53 @@ ln -s /etc/init.d/modloop etc/runlevels/boot/modloop
 ln -s /etc/init.d/swclock etc/runlevels/boot/swclock
 ln -s /etc/init.d/sysctl etc/runlevels/boot/sysctl
 ln -s /etc/init.d/syslog etc/runlevels/boot/syslog
-ln -s /etc/init.d/urandom etc/runlevels/boot/urandom</code></pre></div>
-<p>For the shutdown runlevel:</p>
-
+ln -s /etc/init.d/urandom etc/runlevels/boot/urandom
+</code></pre></div><p>For the shutdown runlevel:</p>
 <p><em>Changes to the shutdown runlevel and then halts the host.</em></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -s /etc/init.d/killprocs etc/runlevels/shutdown/killprocs
 ln -s /etc/init.d/mount-ro etc/runlevels/shutdown/mount-ro
-ln -s /etc/init.d/savecache etc/runlevels/shutdown/savecache</code></pre></div>
-<p>For the sysinit runlevel:</p>
-
+ln -s /etc/init.d/savecache etc/runlevels/shutdown/savecache
+</code></pre></div><p>For the sysinit runlevel:</p>
 <p><em>Brings up any system specific stuff such as /dev, /proc and optionally /sys for Linux based systems</em></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -s /etc/init.d/devfs etc/runlevels/sysinit/devfs
 ln -s /etc/init.d/dmesg etc/runlevels/sysinit/dmesg
-ln -s /etc/init.d/mdev etc/runlevels/sysinit/mdev</code></pre></div>
-<p>Add some services to the default runlevel.</p>
+ln -s /etc/init.d/mdev etc/runlevels/sysinit/mdev
+</code></pre></div><p>Add some services to the default runlevel.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rc-update add local default
 rc-update add dcron default
 rc-update add haveged default
-rc-update add sshd default</code></pre></div>
-<h4 id="configuration">Configuration</h4>
-
+rc-update add sshd default
+</code></pre></div><h4 id="configuration">Configuration</h4>
 <p>Setup ssh deamon.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># permit root login</span>
-sed -i <span style="color:#e6db74">&#39;s/^#PermitRootLogin.*/PermitRootLogin yes/&#39;</span> etc/ssh/sshd_config</code></pre></div>
-<p>Change root password.</p>
+sed -i <span style="color:#e6db74">&#39;s/^#PermitRootLogin.*/PermitRootLogin yes/&#39;</span> etc/ssh/sshd_config
+</code></pre></div><p>Change root password.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">passwd<span style="color:#f92672">=</span>root
-echo root:$passwd | chpasswd</code></pre></div>
-<p>Set hostname.</p>
+echo root:$passwd | chpasswd
+</code></pre></div><p>Set hostname.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hostname<span style="color:#f92672">=</span>red-pitaya
 setup-hostname $hostname
-hostname $hostname</code></pre></div>
-<p>Add some aliases to the root <code>.profile</code>.</p>
+hostname $hostname
+</code></pre></div><p>Add some aliases to the root <code>.profile</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat <span style="color:#e6db74">&lt;&lt;- EOF_CAT &gt; root/.profile
 </span><span style="color:#e6db74">alias rw=&#39;mount -o rw,remount /media/mmcblk0p1&#39;
 </span><span style="color:#e6db74">alias ro=&#39;mount -o ro,remount /media/mmcblk0p1&#39;
-</span><span style="color:#e6db74">EOF_CAT</span></code></pre></div>
-<p>Configure alpine local backup to backup to SD card partition 1.
+</span><span style="color:#e6db74">EOF_CAT</span>
+</code></pre></div><p>Configure alpine local backup to backup to SD card partition 1.
 Also include some directories.
 <code>lbu</code> only includes <code>/etc</code> per default.
 More documentation on lbu <a href="https://wiki.alpinelinux.org/wiki/Alpine_local_backup">here</a>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#e6db74">&#39;s/^# LBU_MEDIA=.*/LBU_MEDIA=mmcblk0p1/&#39;</span> etc/lbu/lbu.conf
 lbu add root
 lbu delete etc/resolv.conf
-lbu delete root/.ash_history</code></pre></div>
-<p>Create backup</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lbu commit -d</code></pre></div>
-<h4 id="finish-up">Finish up</h4>
-
+lbu delete root/.ash_history
+</code></pre></div><p>Create backup</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lbu commit -d
+</code></pre></div><h4 id="finish-up">Finish up</h4>
 <p>We now exit the chroot and restore our hostname.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">exit
-sudo hostname -F /etc/hostname</code></pre></div>
-<h2 id="create-zip">Create ZIP</h2>
-
+sudo hostname -F /etc/hostname
+</code></pre></div><h2 id="create-zip">Create ZIP</h2>
 <p>We now created all necessary files folders and filesystems.
 For convenience we copy all needed ressources in a new folder.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">zip_dir<span style="color:#f92672">=</span>alpine-zip
@@ -407,76 +366,19 @@ cp ../uEnv.txt $zip_dir/
 cp -r $root_dir/media/mmcblk0p1/cache $zip_dir/
 cp $root_dir/media/mmcblk0p1/red-pitaya.apkovl.tar.gz $zip_dir/
 cp modloop $zip_dir/
-cp uInitrd $zip_dir/</code></pre></div>
-<div class="table-responsive">
-<table class="table">
- <colgroup span = "3">
-    <col width = "20%"></col>
-    <col width = "15%"></col>
-    <col width = "60%"></col>
- </colgroup>
-<thead class="thead-dark">
-<tr>
-<th scope="col">Ressource</th>
-<th scope="col">Source</th>
-<th scope="col">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>boot.bin</td>
-<td>Linux build</td>
-<td>Contains the first stage bootloader, the initial bit file and the U-Boot bootloader</td>
-</tr>
-
-<tr>
-<td>uImage</td>
-<td>Linux build</td>
-<td>The Linux kernel image</td>
-</tr>
-
-<tr>
-<td>devicetree.dtb</td>
-<td>Linux build</td>
-<td>Devicetree binary blob</td>
-</tr>
-
-<tr>
-<td>uEnv.txt</td>
-<td>Linux build</td>
-<td>Instructions for U-Boot at boot time</td>
-</tr>
-
-<tr>
-<td>$root_dir/media/mmcblk0p1/cache</td>
-<td>alpine</td>
-<td></td>
-</tr>
-
-<tr>
-<td>$root_dir/media/mmcblk0p1/red-pitaya.apkovl.tar.gz</td>
-<td>alpine</td>
-<td></td>
-</tr>
-
-<tr>
-<td>modloop</td>
-<td>alpine</td>
-<td>Linux kernel modules and custom alpine firmware and modules</td>
-</tr>
-
-<tr>
-<td>uInitrd</td>
-<td>alpine</td>
-<td>Initial ramdisk containing alpine linux vanilla ramdisk</td>
-</tr>
-</tbody>
-</table>
-</div>
-
+cp uInitrd $zip_dir/
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>Zip all files that need to be copied to the SD-Card.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">zip -r red-pitaya-alpine-3.9-armv7-<span style="color:#e6db74">`</span>date +%Y%m%d<span style="color:#e6db74">`</span>.zip $zip_dir/</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">zip -r red-pitaya-alpine-3.9-armv7-<span style="color:#e6db74">`</span>date +%Y%m%d<span style="color:#e6db74">`</span>.zip $zip_dir/
+</code></pre></div>
             </div>
 
             <div class="content-post">

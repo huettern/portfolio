@@ -48,6 +48,9 @@ if (!doNotTrack) {
 }
 </script>
 
+
+
+
     </head>
     <body>
         <a id="bttbutton" class="bg-dark"></a>
@@ -96,7 +99,7 @@ if (!doNotTrack) {
             <div class="content-post">
             <h1>Zynq with RedPitaya from scratch: Hello PS World</h1>
             <p style="text-align:center;margin-top: 0.5em;">
-                <strong>Posted on</strong> Dec 24nd 2017 
+                <strong>Posted on</strong> 24 Dec 2017 
                 <strong>By</strong> Noah Hütter 
             </p>
 
@@ -106,66 +109,40 @@ if (!doNotTrack) {
 
             <h2>Table of Contents</h2>
             <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#run-vivado">Run Vivado</a></li>
-<li><a href="#create-a-new-project">Create a new Project</a></li>
-<li><a href="#create-new-block-design">Create new Block Design</a></li>
-<li><a href="#generate-output-products">Generate Output Products</a></li>
-<li><a href="#export-hardware-for-sdk">Export Hardware for SDK</a></li>
-<li><a href="#create-board-support-package">Create Board support Package</a></li>
-<li><a href="#create-a-project">Create a project</a></li>
-<li><a href="#conclusion">Conclusion</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#run-vivado">Run Vivado</a></li>
+    <li><a href="#create-a-new-project">Create a new Project</a></li>
+    <li><a href="#create-new-block-design">Create new Block Design</a></li>
+    <li><a href="#generate-output-products">Generate Output Products</a></li>
+    <li><a href="#export-hardware-for-sdk">Export Hardware for SDK</a></li>
+    <li><a href="#create-board-support-package">Create Board support Package</a></li>
+    <li><a href="#create-a-project">Create a project</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
 </nav>
-            
-
-<p>In this post we are going to say Hello from the processing system (PS) in the Zynq SoC. As a platform I am using the RedPitaya board. With only 199$ it is the cheapest Xilinx Zynq board on the market. Unfortunately the hardware is not open source, but with the open source software, I could figure out the necessary settings to get this board running.</p>
-
+            <p>In this post we are going to say Hello from the processing system (PS) in the Zynq SoC. As a platform I am using the RedPitaya board. With only 199$ it is the cheapest Xilinx Zynq board on the market. Unfortunately the hardware is not open source, but with the open source software, I could figure out the necessary settings to get this board running.</p>
 <h2 id="run-vivado">Run Vivado</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sourcevivado
-vivado &amp;</code></pre></div>
-<h2 id="create-a-new-project">Create a new Project</h2>
-
+vivado &amp;
+</code></pre></div><h2 id="create-a-new-project">Create a new Project</h2>
 <p>Create a new project from File -&gt; New Project, Next. Enter the project name and location.</p>
-
-<p><img src="img/1.png" alt="" /></p>
-
+<p><img src="img/1.png" alt=""></p>
 <p>We are going to create an RTL Project (register transfer logic) without specifying any sources.</p>
-
-<p><img src="img/2.png" alt="" /></p>
-
+<p><img src="img/2.png" alt=""></p>
 <p>Now we have to select the Xilinx Zynq part number. The Zynq on the RedPitaya board is a</p>
-
 <pre><code>xc7z010clg400-1
-</code></pre>
-
-<p>You can enter the part number in the Search field. Click next and finish.</p>
-
-<p><img src="img/3.png" alt="" /></p>
-
+</code></pre><p>You can enter the part number in the Search field. Click next and finish.</p>
+<p><img src="img/3.png" alt=""></p>
 <p>The project is now created and we can start adding design sources.</p>
-
 <h2 id="create-new-block-design">Create new Block Design</h2>
-
 <p>We are going to create a block design as out top level design entry. We could write this in VHDL if we want, but the block design makes things much easier and we can add new IP block using the graphic interface.</p>
-
 <p>To create a new block design, click on Create Block Design in the IP INTEGRATOR group in the Flow Navigator on the left side of the window. Hence this is out top level block design, we’ll name it system.</p>
-
-<p><img src="img/4.png" alt="" /></p>
-
+<p><img src="img/4.png" alt=""></p>
 <p>The first and only block we need in this tutorial is the ZYNQ7 Processing System. Add it by clicking the blue + in the Diagram toolbar.</p>
-
-<p><img src="img/5.png" alt="" /></p>
-
+<p><img src="img/5.png" alt=""></p>
 <p>Now double click on the ZYNQ Processing System block to open its settings. We want the absolute minimum in this project. Disable the AXI GP0 interface in PS-PL Configuration -&gt; AXI Non Secure Enablement -&gt; GP Master AXI Interface.</p>
-
-<p><img src="img/6.png" alt="" /></p>
-
+<p><img src="img/6.png" alt=""></p>
 <p>Now we are going to configure the DDR memory part. Click on DDR Configuration in the Page Navigator and apply the following settings.</p>
-
 <table>
 <thead>
 <tr>
@@ -173,160 +150,97 @@ vivado &amp;</code></pre></div>
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Memory Type</td>
 <td>DDR3 (Low Voltage)</td>
 </tr>
-
 <tr>
 <td>Memory Part</td>
 <td>MT41J256M16 RE-125</td>
 </tr>
-
 <tr>
 <td>Effective DRAM Bus Width</td>
 <td>16 Bit</td>
 </tr>
-
 <tr>
 <td>ECC</td>
 <td>Disabled</td>
 </tr>
-
 <tr>
 <td>Burst Length</td>
 <td>8</td>
 </tr>
-
 <tr>
 <td>DDR</td>
 <td>533.333333</td>
 </tr>
-
 <tr>
 <td>Internal Vref</td>
 <td>Disabled</td>
 </tr>
-
 <tr>
 <td>Junction Temperature ( C )</td>
 <td>Normal (0-85)</td>
 </tr>
 </tbody>
 </table>
-
-<p><img src="img/7.png" alt="" /></p>
-
+<p><img src="img/7.png" alt=""></p>
 <p>Now we enable the UART 0 peripheral to send a Hello World to the PC. Under MIO Configuration -&gt; I/O Peripherals enable UART 0 on MIO 14..15. These MIO pins are connected directly to the Processing System (PS). On the RedPitaya board they are connected to a USB-UART bridge.</p>
-
-<p><img src="img/8.png" alt="" /></p>
-
+<p><img src="img/8.png" alt=""></p>
 <p>We are only using the PS and can turn off the clock for the PL (Programmable Logic). Disable FCLK_CLK0 in Clock Configuration -&gt; PL Fabric Clocks.</p>
-
-<p><img src="img/9.png" alt="" /></p>
-
+<p><img src="img/9.png" alt=""></p>
 <p>This was the last step. Click OK to apply these settings. A message should appear to run the block automation. Click Run Block Automation.</p>
-
-<p><img src="img/10.png" alt="" /></p>
-
+<p><img src="img/10.png" alt=""></p>
 <p>Don’t change anything here, just click OK.</p>
-
-<p><img src="img/11.png" alt="" /></p>
-
+<p><img src="img/11.png" alt=""></p>
 <p>Now the block diagram is finished and should look something like this:</p>
-
-<p><img src="img/12.png" alt="" /></p>
-
+<p><img src="img/12.png" alt=""></p>
 <h2 id="generate-output-products">Generate Output Products</h2>
-
 <p>Now we can tell Vivado to generate the output files from the generated block design. Before we do that, I’d like to change the target language to VHDL. This is done in Project Manager -&gt; Settings &gt; General -&gt; Target language.</p>
-
-<p><img src="img/13.png" alt="" /></p>
-
+<p><img src="img/13.png" alt=""></p>
 <p>Now, under Sources, right click on the block design and click Generate Output Products.</p>
-
-<p><img src="img/14.png" alt="" /></p>
-
+<p><img src="img/14.png" alt=""></p>
 <p>The defaults here are fine. Click Generate. Depending on your CPU, this will take some seconds, be patient. You can increase the number of threads used for this task in the Number of jobs field.</p>
-
-<p><img src="img/15.png" alt="" /></p>
-
+<p><img src="img/15.png" alt=""></p>
 <p>After generating the output products, we create a HDL Wrapper. Right click again on the block design and choose Create HDL Wrapper.</p>
-
-<p><img src="img/16.png" alt="" /></p>
-
+<p><img src="img/16.png" alt=""></p>
 <p>If you expand the system_wrapper source you can see the file hierarchy.</p>
-
-<p><img src="img/17.png" alt="" /></p>
-
+<p><img src="img/17.png" alt=""></p>
 <h2 id="export-hardware-for-sdk">Export Hardware for SDK</h2>
-
 <p>The part in vivado is almost done. To write code for the CPU we need information about the now generated hardware. Under File -&gt; Export click Export Hardware.</p>
-
-<p><img src="img/18.png" alt="" /></p>
-
+<p><img src="img/18.png" alt=""></p>
 <p>Click OK. This will generate a hardware description file system_wrapper.hdf</p>
-
-<p><img src="img/19.png" alt="" /></p>
-
+<p><img src="img/19.png" alt=""></p>
 <p>Now we can launch the SDK. The SDK is Xilinx’s tool to develop bare metal C code for the processing system. Click on File -&gt; Launch SDK -&gt; OK.</p>
-
-<p><img src="img/20.png" alt="" /></p>
-
+<p><img src="img/20.png" alt=""></p>
 <p>The SDK will launch and automatically import the generated hardware platform specification.</p>
-
-<p><img src="img/21.png" alt="" /></p>
-
+<p><img src="img/21.png" alt=""></p>
 <h2 id="create-board-support-package">Create Board support Package</h2>
-
 <p>Almost there, hang on! Now we create a board support package from the hardware specification. The BSP is then used to create a C application project. Click File -&gt; New -&gt; Board Support Package.</p>
-
-<p><img src="img/22.png" alt="" /></p>
-
+<p><img src="img/22.png" alt=""></p>
 <p>The target hardware is automatically filled with the hardware platform. Click Finish.</p>
-
-<p><img src="img/23.png" alt="" /></p>
-
+<p><img src="img/23.png" alt=""></p>
 <p>Under Overview -&gt; standalone you can see that the standard in- and output are already mapped to the UART 0 peripheral.</p>
-
-<p><img src="img/24.png" alt="" /></p>
-
+<p><img src="img/24.png" alt=""></p>
 <h2 id="create-a-project">Create a project</h2>
-
 <p>Now we can finally start creating a bare metal C project. Click on File -&gt; New -&gt; Application Project to create a new project. Give it a Name and make sure it is using the existing board support package we created earlier. Click next.</p>
-
-<p><img src="img/25.png" alt="" /></p>
-
+<p><img src="img/25.png" alt=""></p>
 <p>As lazy as we are, choose the Hello World template and hit Finish.</p>
-
-<p><img src="img/26.png" alt="" /></p>
-
+<p><img src="img/26.png" alt=""></p>
 <p>You can open the created file in the Project Explorer.</p>
-
-<p><img src="img/27.png" alt="" /></p>
-
+<p><img src="img/27.png" alt=""></p>
 <p>The last step before testing is creating a Run Configuration. This configuration tells the SDK how to load the binary onto the processing system. Click the little arrow to the right of the green play button and click Run Configurations.</p>
-
-<p><img src="img/28.png" alt="" /></p>
-
+<p><img src="img/28.png" alt=""></p>
 <p>Create a new configuration by double clicking on Xilinx C/C++ application (GDB). Make sure the hardware platform, processor and initialization file are correct. Use the Search… button to locate the ps7_init.tcl file. Enable Run ps7_init or nothing will happen later.</p>
-
-<p><img src="img/29.png" alt="" /></p>
-
+<p><img src="img/29.png" alt=""></p>
 <p>In the Application tab choose you project. Hit apply but don’t Run it yet.</p>
-
-<p><img src="img/30.png" alt="" /></p>
-
+<p><img src="img/30.png" alt=""></p>
 <p>First we have to open a terminal window to listen to the output of the serial port. Launch a terminal and type</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo picocom /dev/ttyUSB0 -b <span style="color:#ae81ff">115200</span></code></pre></div>
-<p>Now you can hit Run. This will copy the binary onto the RAM and start execution. In the terminal you should see</p>
-
-<p><img src="img/31.png" alt="" /></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo picocom /dev/ttyUSB0 -b <span style="color:#ae81ff">115200</span>
+</code></pre></div><p>Now you can hit Run. This will copy the binary onto the RAM and start execution. In the terminal you should see</p>
+<p><img src="img/31.png" alt=""></p>
 <h2 id="conclusion">Conclusion</h2>
-
 <p>Congratulations! You wrote your first application for the Processing System on a Xilinx Zynq SoC.</p>
 
             </div>

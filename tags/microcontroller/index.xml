@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microcontroller on Noah Hütter Portfolio</title>
+    <link>https://xn--htter-kva.ch/tags/microcontroller/</link>
+    <description>Recent content in Microcontroller on Noah Hütter Portfolio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xn--htter-kva.ch/tags/microcontroller/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Edison - Keyword Spotting on Microcontroller</title>
+      <link>https://xn--htter-kva.ch/posts/edison-kws-on-mcu/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xn--htter-kva.ch/posts/edison-kws-on-mcu/</guid>
+      <description>1. TLDR Download pre-processed audio data, train the model, implement it and compile the MCU code.
+# clone and setup git clone https://github.com/noah95/edison cd edison source bootstrap.sh # fetch training data and pre-trained model curl -L https://github.com/noah95/edison/releases/download/v2.0.0-RC1/keywords-8-noah.tar.gz | tar xvz curl -L https://github.com/noah95/edison/releases/download/v2.0.0-RC1/kws_model.h5 -o cache/kws_keras/kws_model.h5 # train model ./main.py train keras train cp cache/kws_keras/kws_model.h5 ../firmware/src/ai/cube/kws/kws_model.h5  open cube project firmware/CubeMX/edison.ioc Additional Software -&amp;gt; STMicro&amp;hellip; -&amp;gt; kws Browse: select firmware/src/ai/cube/kws/kws_model.h5 Analyse click GENERATE CODE  # import net to firmware folder cd .</description>
+    </item>
+    
+  </channel>
+</rss>

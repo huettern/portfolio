@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
@@ -13,18 +13,43 @@
   </url>
   
   <url>
+    <loc>https://xn--htter-kva.ch/tags/ai/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xn--htter-kva.ch/posts/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xn--htter-kva.ch/posts/edison-kws-on-mcu/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xn--htter-kva.ch/tags/microcontroller/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xn--htter-kva.ch/tags/ml/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xn--htter-kva.ch/</loc>
-    <lastmod>2019-08-28T03:29:08-07:00</lastmod>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xn--htter-kva.ch/tags/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://xn--htter-kva.ch/projects/</loc>
     <lastmod>2019-08-28T03:29:08-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xn--htter-kva.ch/posts/</loc>
-    <lastmod>2019-07-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -44,11 +69,6 @@
   
   <url>
     <loc>https://xn--htter-kva.ch/tags/nas/</loc>
-    <lastmod>2019-07-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xn--htter-kva.ch/tags/</loc>
     <lastmod>2019-07-15T00:00:00+00:00</lastmod>
   </url>
   

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Noah Hütter Portfolio</title>
@@ -6,7 +6,7 @@
     <description>Recent content on Noah Hütter Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Aug 2019 03:29:08 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xn--htter-kva.ch/index.xml" rel="self" type="application/rss+xml" />
     
@@ -30,6 +30,16 @@
     </item>
     
     <item>
+      <title>Edison - Keyword Spotting on Microcontroller</title>
+      <link>https://xn--htter-kva.ch/posts/edison-kws-on-mcu/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xn--htter-kva.ch/posts/edison-kws-on-mcu/</guid>
+      <description>1. TLDR Download pre-processed audio data, train the model, implement it and compile the MCU code.
+# clone and setup git clone https://github.com/noah95/edison cd edison source bootstrap.sh # fetch training data and pre-trained model curl -L https://github.com/noah95/edison/releases/download/v2.0.0-RC1/keywords-8-noah.tar.gz | tar xvz curl -L https://github.com/noah95/edison/releases/download/v2.0.0-RC1/kws_model.h5 -o cache/kws_keras/kws_model.h5 # train model ./main.py train keras train cp cache/kws_keras/kws_model.h5 ../firmware/src/ai/cube/kws/kws_model.h5  open cube project firmware/CubeMX/edison.ioc Additional Software -&amp;gt; STMicro&amp;hellip; -&amp;gt; kws Browse: select firmware/src/ai/cube/kws/kws_model.h5 Analyse click GENERATE CODE  # import net to firmware folder cd .</description>
+    </item>
+    
+    <item>
       <title>Encrypted Remote Backup using duplicity</title>
       <link>https://xn--htter-kva.ch/posts/encrypted-remote-backup-using-duplicity/</link>
       <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
@@ -47,7 +57,8 @@ Requirements  Off-site backup at low to no cost therefore cloud services are exp
       <guid>https://xn--htter-kva.ch/posts/pitaya-alpine/</guid>
       <description>Disclaimer: This code is largely copied from https://github.com/pavel-demin/red-pitaya-notes, licensed under MIT license.
 Prerequisites This tutorial is built on top of the Linux on Zynq tutorial. It requires the Kernel built in the previous post. So if you want to get it working, start over at Linux on Zynq and come back here after you are done.
-Clone my zynq-sandbox repository from github if you have not done so already.</description>
+Clone my zynq-sandbox repository from github if you have not done so already.
+git clone https://github.</description>
     </item>
     
     <item>

@@ -829,6 +829,13 @@ section {
   line-height: 30px;
 }
 
+.content-post li {
+  font-size: 19px;
+  color: #676767;
+  letter-spacing: 0;
+  line-height: 30px;
+}
+
 .content-post img {
   margin-top: 20px;
   
