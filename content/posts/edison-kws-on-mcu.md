@@ -9,9 +9,9 @@ image: "img/edison/edison-hw.jpg"
 jumbo: "img/edison/edison-head.png"
 description: "In my first project on the topic of Machine Learning I implemented a simple keyword spotting algorithm on a Microcontroller. In this post I will walk you through the steps of implementing and testing feature extraction and a neural network on a MCU!"
 
-markup: "mmark"
 katex: true
 ---
+
 
 ## 1. TLDR
 Download pre-processed audio data, train the model, implement it and compile the MCU code.
@@ -157,7 +157,7 @@ I tried to find a suitable threshold where a word can be considered detected but
 unusable. To cope with this, a moving average filter on the net output was introduced. It simply averages the last value
 with the new net output to get a smoothened trace. This might be a bit hacky but worked out for this purpose.
 
-$$pred[i+1] = \alpha\cdot pred[i] + (1-\alpha)\cdot net\_out$$
+$$\text{pred}[i+1] = \alpha\cdot \text{pred}[i] + (1-\alpha)\cdot \text{netout}$$
 
 [![](slide-win.png)](slide-win.png)
 
